@@ -3,7 +3,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity counter is
+entity counter_up is
     Generic (
         THRESHOLD : natural := 100000000
     );
@@ -13,9 +13,9 @@ entity counter is
            COUNT : out STD_LOGIC_VECTOR(19 downto 0);
            TS : out STD_LOGIC
     );
-end counter;
+end counter_up;
 
-architecture Behavioral of counter is 
+architecture Behavioral of counter_up is 
 
 signal count_next : unsigned(19 downto 0);
 signal count_reg : unsigned(19 downto 0) := (others => '0');
