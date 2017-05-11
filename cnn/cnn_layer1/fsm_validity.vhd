@@ -45,23 +45,35 @@ component counter_down_generic is
     );
 end component;
 
-type state_type is (init, startup, compute_valid, compute_invalid);
+type state_type is (init, startup, compute_valid, compute_invalid, overlap_image);
 signal state_reg : state_type := init;
 signal state_next : state_type;
+
+signal valid_out_tmp : std_logic;
 
 ----------------------------        
 --      TIMER PARAMS      --
 ----------------------------
 
-constant THRESHOLD_WIDTH : natural := 8;
+constant TIM_THRESHOLD_WIDTH : natural := 8;
 signal tim_clear, tim_set, tim_alert : std_logic;
-signal tim_threshold : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
+signal tim_threshold : std_logic_vector(TIM_THRESHOLD_WIDTH - 1 downto 0);
+
+------------------------------        
+--      LINE-COUNTER PARAMS --
+------------------------------
+
+constant COUNT_THRESHOLD_WIDTH : natural := 8; -- mozem zlepsit, ked pouzijem log2c na (K-1)
+signal count_clear, count_set, count_alert, count_ce : std_logic;
+signal count_threshold : std_logic_vector(COUNT_THRESHOLD_WIDTH - 1 downto 0);
+constant COUNT_VALID_LINES : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
+constant COUNT_TRANSIT_PIXELS : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1; -- 1 CLK stojim e+ste v stave compute_valid, aby som identifikoval prechod na stav overlap_image;
 
 begin
 
 	timer : counter_down_generic
 		generic map (
-			THRESHOLD_WIDTH => THRESHOLD_WIDTH
+			THRESHOLD_WIDTH => TIM_THRESHOLD_WIDTH
 		)
 		port map (
 			clk => clk,
@@ -71,6 +83,19 @@ begin
 			threshold => tim_threshold,
 			tc => tim_alert
 		);
+				
+	line_counter : counter_down_generic
+	   generic map (
+                THRESHOLD_WIDTH => COUNT_THRESHOLD_WIDTH
+            )
+            port map (
+                clk => clk,
+                ce => count_ce,
+                clear => count_clear,
+                set => count_set,
+                threshold => count_threshold,
+                tc => count_alert
+            );
 	               
     registers: process (clk) is
     begin
@@ -83,40 +108,63 @@ begin
         end if;
     end process registers;            
                 
-    control_logic: process (state_reg, tim_alert) is
+    control_logic: process (state_reg, tim_alert, count_alert) is
     begin
         state_next <= state_reg;
-        valid <= '0';
+        valid_out_tmp <= '0';
 		
 		tim_clear <= '0';
 		tim_set <= '0';
 		tim_threshold <= (others => '0');
+
+        count_clear <= '0';
+        count_set <= '0';
+		count_ce <= '0';
+		count_threshold <= (others => '0');
 		
         case state_reg is
             when init =>
-                tim_threshold <= std_logic_vector(to_unsigned(STARTUP_DELAY - 1, THRESHOLD_WIDTH));
+                tim_threshold <= std_logic_vector(to_unsigned(STARTUP_DELAY - 1, TIM_THRESHOLD_WIDTH));
 		      	tim_set <= '1';
                 state_next <= startup;
                 
             when startup =>
                 if (tim_alert = '1') then
-                    tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, THRESHOLD_WIDTH));
+                    tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
 					tim_set <= '1';
+                    count_threshold <= std_logic_vector(to_unsigned(COUNT_VALID_LINES, COUNT_THRESHOLD_WIDTH));
+                    count_set <= '1';
                     state_next <= compute_valid;    
                 end if;
                 
-            when compute_valid =>
-                valid <= '1';          
+            when compute_valid =>                
+                valid_out_tmp <= '1';                       
                 if (tim_alert = '1') then
-                    tim_threshold <= std_logic_vector(to_unsigned(INVALID_LINE_PART - 1, THRESHOLD_WIDTH));
+                    tim_threshold <= std_logic_vector(to_unsigned(INVALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
 					tim_set <= '1';
                     state_next <= compute_invalid;
                 end if;
+                
+                if (count_alert = '1') then
+                    valid_out_tmp <= '0';
+                    tim_threshold <= std_logic_vector(to_unsigned(COUNT_TRANSIT_PIXELS - 1, TIM_THRESHOLD_WIDTH));
+                    tim_set <= '1';
+                    state_next <= overlap_image;
+                    count_clear <= '1';
+                end if;
             
             when compute_invalid =>
-                if (tim_alert = '1') then
-                    tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, THRESHOLD_WIDTH));
+                if (tim_alert = '1') then -- prechod na dalsi riadok
+                    tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
 					tim_set <= '1';
+                    state_next <= compute_valid;
+                    count_ce <= '1';                                                     
+                end if;
+            
+            when overlap_image =>
+                if (tim_alert = '1') then
+                    tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
+                    tim_set <= '1';
                     state_next <= compute_valid;
                 end if;
                                           
@@ -125,5 +173,7 @@ begin
                   
         end case;     
     end process control_logic;
+    
+    valid <= valid_out_tmp and run;
     
 end Behavioral;
