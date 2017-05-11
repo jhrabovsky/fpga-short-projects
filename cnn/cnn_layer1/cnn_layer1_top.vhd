@@ -6,7 +6,9 @@ use STD.TEXTIO.ALL;
 entity top is
     Port ( 
         CLK100MHZ: in std_logic;
-        RST: in std_logic
+        RST: in std_logic;
+        DOUT_VLD: out std_logic;
+        DOUT: out std_logic_vector(16 * 19 - 1 downto 0)  
     );
 end top;
 
@@ -15,18 +17,6 @@ architecture RTL of top is
 --------------------------
 --      COMPONENTS      --
 --------------------------
-
-component counter is
-    Generic (
-        THRESHOLD : natural := 5
-    );
-    Port ( CLK_IN : in STD_LOGIC;
-           RST: in STD_LOGIC;
-           EN : in STD_LOGIC;
-           COUNT : out STD_LOGIC_VECTOR(19 downto 0);
-           TS : out STD_LOGIC
-    );
-end component;
 
 component mem_reader is
     generic (
@@ -39,7 +29,8 @@ component mem_reader is
         clk : in std_logic;
         rst : in std_logic;
         en : in std_logic;
-        data : out std_logic_vector(DATA_LEN - 1 downto 0)
+        data : out std_logic_vector(DATA_LEN - 1 downto 0);
+        ts : out std_logic
     );
 end component;
 
@@ -142,7 +133,8 @@ constant RESULT_WIDTH : natural := RESULT_INTEGER_LEN + RESULT_FRACTION_LEN;
 --       MEMORY FORMAT  --
 --------------------------
 
-constant NO_INPUTS : natural := 81;
+constant NO_IMAGES : natural := 10;
+constant NO_INPUTS : natural := NO_IMAGES * (IMAGE_ROW_LEN ** 2);
 constant ROM_ADDR_LEN : natural := 10;
 constant ROM_DATA_LEN : natural := 9;
 
@@ -174,11 +166,11 @@ signal kernel_map : KERNEL_MAP_T;
 signal mem_ce : std_logic;
 signal mem_data : std_logic_vector(ROM_DATA_LEN - 1 downto 0);
 signal mem_addr : std_logic_vector(ROM_ADDR_LEN - 1 downto 0);
-signal count_tmp : std_logic_vector(29 downto 0);
+signal mem_ts : std_logic;
 
 signal valid_in_next, valid_in_reg : std_logic;
 signal coef_load : std_logic;
-signal valid_res : std_logic;
+signal valid_out : std_logic;
 signal result : std_logic_vector(NO_OUTPUT_MAPS * RESULT_WIDTH - 1 downto 0); 
 
 signal state_reg : STATE_T := init;
@@ -205,6 +197,9 @@ signal send_tick, recv_tick : std_logic;
 
 begin
 
+    DOUT <= result;
+    DOUT_VLD <= valid_out;
+
     kernel_map <= InitKERNEL("kernel-data.mif");
     gen_kernel_map : for I in 0 to NO_OUTPUT_MAPS - 1 generate
             w((I+1) * (KERNEL_SIZE**2) * COEF_WIDTH - 1 downto I * (KERNEL_SIZE**2) * COEF_WIDTH) <= kernel_map(I);
@@ -213,8 +208,6 @@ begin
     --------------------------------
     --      INPUT IMAGE MEMORY    --
     --------------------------------
-
-    mem_ce <= valid_in_next;
 
     image_mem_reader : mem_reader
         generic map (
@@ -227,21 +220,10 @@ begin
             clk => CLK100MHZ,
             rst =>RST,
             en => mem_ce,
-            data => mem_data   
+            data => mem_data,
+            ts => mem_ts
         );
-
-    --sec_tick_gen : counter
-    --    generic map (
-    --        THRESHOLD => 25000000
-    --    )
-    --    port map (
-    --        CLK_IN => CLK100MHZ,
-    --        RST => RST,
-    --        EN => '1',
-    --        COUNT => open,
-    --        TS => step
-    --    );
-    
+  
     --------------------------
     --      CONV LAYER      --
     --------------------------
@@ -267,9 +249,15 @@ begin
             rst => RST,
             coef_load => coef_load,
             valid_in => valid_in_reg,
-            valid_out => valid_res
+            valid_out => valid_out
         );
-        
+    
+    --------------------------------------
+    --      FSM - CONTROL PROCESSING    --
+    --------------------------------------
+    
+    valid_in_next <= mem_ce;
+    
     regs : process (CLK100MHZ) is
     begin
         if (rising_edge(CLK100MHZ)) then
@@ -287,7 +275,7 @@ begin
     begin
         state_next <= state_reg;
         coef_load <= '0';
-        valid_in_next <= '0';
+        mem_ce <= '0';
 
         case state_reg is
             when init =>
@@ -298,7 +286,7 @@ begin
                 state_next <= compute;
                 
             when compute =>
-                valid_in_next <= '1'; 
+                mem_ce <= '1';
 
             when others =>
                 state_next <= init;
@@ -309,50 +297,50 @@ begin
     --      OUTPUT MEMORY    --
     ---------------------------
 
-    result_fifos_gen : for I in 0 to NO_OUTPUT_MAPS - 1 generate
-        bram_fifo_inst : bram_fifo_wrapper
-            generic map (
-                DATA_LEN => RESULT_WIDTH
-            )
-            port map (
-                clk => CLK100MHZ,
-                rst => RST,
-                empty => empty(I),
-                full => full(I),
-                rderr => rderr(I),
-                wrerr => wrerr(I),
-                din => result((I+1) * RESULT_WIDTH - 1 downto I * RESULT_WIDTH),
-                wren => wren(I),
-                dout => fifo_dout((I+1) * RESULT_WIDTH - 1 downto I * RESULT_WIDTH),
-                rden => rden(I)
-            );
+--    result_fifos_gen : for I in 0 to NO_OUTPUT_MAPS - 1 generate
+--        bram_fifo_inst : bram_fifo_wrapper
+--            generic map (
+--                DATA_LEN => RESULT_WIDTH
+--            )
+--            port map (
+--                clk => CLK100MHZ,
+--                rst => RST,
+--                empty => empty(I),
+--                full => full(I),
+--                rderr => rderr(I),
+--                wrerr => wrerr(I),
+--                din => result((I+1) * RESULT_WIDTH - 1 downto I * RESULT_WIDTH),
+--                wren => wren(I),
+--                dout => fifo_dout((I+1) * RESULT_WIDTH - 1 downto I * RESULT_WIDTH),
+--                rden => rden(I)
+--            );
         
-        wren(I) <= valid_res;
-    end generate;  
+--        wren(I) <= valid_out;
+--    end generate;  
 
     --------------------------
     --      UART            --
     --------------------------
 
-    --uart_unit_inst: uart_unit
-    --    generic map (
-    --        DBITS => UART_DATA_LEN,
-    --        SB_TICKS => 16,
-    --        TRESHOLD_BITS => 9,
-    --        TRESHOLD => 326, -- Baudrate=19200 for SYS_CLK=100MHZ
-    --        ADDR_BITS => 2 -- address bits for TX and RX FIFO buffers
-    --    )
-    --    port map (
-    --        clk=>CLK100MHZ,
-    --        rst=>RST,
-    --        rx_i=>UART_TXD_IN,
-    --        tx_o=>UART_RXD_OUT,
-    --        rx_empty=>rx_empty,
-    --        tx_full=>tx_full,
-    --        tx_data_i=>data_send,
-    --        rx_data_o=>data_recv,
-    --        tx_uart=>send_tick,
-    --        rx_uart=>recv_tick
-    --    );
+--    uart_unit_inst: uart_unit
+--        generic map (
+--            DBITS => UART_DATA_LEN,
+--            SB_TICKS => 16,
+--            TRESHOLD_BITS => 9,
+--            TRESHOLD => 326, -- Baudrate=19200 for SYS_CLK=100MHZ
+--            ADDR_BITS => 2 -- address bits for TX and RX FIFO buffers
+--        )
+--        port map (
+--            clk=>CLK100MHZ,
+--            rst=>RST,
+--            rx_i=>UART_TXD_IN,
+--            tx_o=>UART_RXD_OUT,
+--            rx_empty=>rx_empty,
+--            tx_full=>tx_full,
+--            tx_data_i=>data_send,
+--            rx_data_o=>data_recv,
+--            tx_uart=>send_tick,
+--            rx_uart=>recv_tick
+--        );
 
 end RTL;
