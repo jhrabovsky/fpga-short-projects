@@ -14,7 +14,8 @@ entity mem_reader is
 		clk : in std_logic;
 		rst : in std_logic;
 		en : in std_logic;
-		data : out std_logic_vector(DATA_LEN - 1 downto 0)
+		data : out std_logic_vector(DATA_LEN - 1 downto 0);
+		ts : out std_logic
 	);
 end mem_reader;
 
@@ -77,7 +78,7 @@ begin
             RST => rst,
             EN => en,
             COUNT => count_tmp,
-            TS => open
+            TS => ts
         );  
 
 --    regs : process (clk) is

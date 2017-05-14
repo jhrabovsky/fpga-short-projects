@@ -200,7 +200,7 @@ begin
     DOUT <= result;
     DOUT_VLD <= valid_out;
 
-    kernel_map <= InitKERNEL("kernel-data.mif");
+    kernel_map <= InitKERNEL("kernels.mif");
     gen_kernel_map : for I in 0 to NO_OUTPUT_MAPS - 1 generate
             w((I+1) * (KERNEL_SIZE**2) * COEF_WIDTH - 1 downto I * (KERNEL_SIZE**2) * COEF_WIDTH) <= kernel_map(I);
     end generate gen_kernel_map;
@@ -211,7 +211,7 @@ begin
 
     image_mem_reader : mem_reader
         generic map (
-            FILENAME => "image-data.mif",
+            FILENAME => "images.mif",
             DATA_LEN => ROM_DATA_LEN,
             ADDR_LEN => ROM_ADDR_LEN,
             NO_ITEMS => NO_INPUTS
