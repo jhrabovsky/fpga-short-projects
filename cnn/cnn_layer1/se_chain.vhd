@@ -36,7 +36,8 @@ component systolic_fir is
         MODE : string
     );
     
-    Port ( xn : in std_logic_vector(17 downto 0);
+    Port ( 
+           xn : in std_logic_vector(17 downto 0);
            yn : out std_logic_vector(47 downto 0);
            bcout : out std_logic_vector(17 downto 0);
            W : in std_logic_vector(30 * N - 1 downto 0); 
