@@ -247,11 +247,11 @@ begin
     --      L1 ACTIVATION      -- 
     -----------------------------
 
-    activation_function_1: for I in 0 to L1_NO_OUTPUT_MAPS generate
-        res_from_1_pos <= (others => '0') when (res_from_1((I+1) * L1_RESULT_WIDTH - 1) = '1') else
-                          res_from_1;
+    activation_function_1: for I in 0 to L1_NO_OUTPUT_MAPS - 1 generate
+        res_from_1_pos((I+1) * L1_RESULT_WIDTH - 1 downto I * L1_RESULT_WIDTH) <= (others => '0') when (res_from_1((I+1) * L1_RESULT_WIDTH - 1) = '1') else
+                          res_from_1((I+1) * L1_RESULT_WIDTH - 1 downto I * L1_RESULT_WIDTH);
     end generate activation_function_1;             
-                      
+                                       
     -----------------------------
     --      L2 CONV LAYER      --
     -----------------------------
@@ -284,11 +284,11 @@ begin
     --      L2 ACTIVATION      -- 
     -----------------------------
     
-    activation_function_2: for I in 0 to L2_NO_OUTPUT_MAPS generate
-        res_from_2_pos <= (others => '0') when (res_from_2((I+1) * L2_RESULT_WIDTH - 1) = '1') else
-                          res_from_2;
+    activation_function_2: for I in 0 to L2_NO_OUTPUT_MAPS - 1 generate
+        res_from_2_pos((I+1) * L2_RESULT_WIDTH - 1 downto I * L2_RESULT_WIDTH) <= (others => '0') when (res_from_2((I+1) * L2_RESULT_WIDTH - 1) = '1') else
+                          res_from_2((I+1) * L2_RESULT_WIDTH - 1 downto I * L2_RESULT_WIDTH);
     end generate activation_function_2;
-    
+        
     --------------------------------------
     --      FSM - CONTROL PROCESSING    --
     --------------------------------------
