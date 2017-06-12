@@ -74,6 +74,7 @@ end component;
 
 component fsm is
     Generic (
+        NO_INPUT_MAPS : natural;
         INPUT_ROW_LENGTH : integer;
         KERNEL_SIZE : integer
     );
@@ -152,6 +153,7 @@ begin
     
     fsm_inst : fsm
         generic map (
+            NO_INPUT_MAPS => NO_INPUT_MAPS,
             INPUT_ROW_LENGTH => INPUT_ROW_SIZE,
             KERNEL_SIZE => KERNEL_SIZE
         )

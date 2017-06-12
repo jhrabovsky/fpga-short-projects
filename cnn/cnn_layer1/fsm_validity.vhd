@@ -56,7 +56,9 @@ signal valid_out_tmp : std_logic;
 ----------------------------
 
 constant TIM_THRESHOLD_WIDTH : natural := 8;
-signal tim_clear, tim_set, tim_alert : std_logic;
+signal tim_clear, tim_set, tim_alert, tim_ce : std_logic;
+signal tim_clear_tmp, tim_set_tmp: std_logic;
+
 signal tim_threshold : std_logic_vector(TIM_THRESHOLD_WIDTH - 1 downto 0);
 
 ------------------------------        
@@ -65,6 +67,8 @@ signal tim_threshold : std_logic_vector(TIM_THRESHOLD_WIDTH - 1 downto 0);
 
 constant COUNT_THRESHOLD_WIDTH : natural := 8; -- mozem zlepsit, ked pouzijem log2c na (K-1)
 signal count_clear, count_set, count_alert, count_ce : std_logic;
+signal count_clear_tmp, count_set_tmp, count_ce_tmp : std_logic;
+
 signal count_threshold : std_logic_vector(COUNT_THRESHOLD_WIDTH - 1 downto 0);
 constant COUNT_VALID_LINES : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
 constant COUNT_TRANSIT_PIXELS : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1; -- 1 CLK stojim e+ste v stave compute_valid, aby som identifikoval prechod na stav overlap_image;
@@ -77,7 +81,7 @@ begin
 		)
 		port map (
 			clk => clk,
-			ce => run,
+			ce => tim_ce,
 			clear => tim_clear,
 			set => tim_set,
 			threshold => tim_threshold,
@@ -113,27 +117,27 @@ begin
         state_next <= state_reg;
         valid_out_tmp <= '0';
 		
-		tim_clear <= '0';
-		tim_set <= '0';
+		tim_clear_tmp <= '0';
+		tim_set_tmp <= '0';
 		tim_threshold <= (others => '0');
 
-        count_clear <= '0';
-        count_set <= '0';
-		count_ce <= '0';
+        count_clear_tmp <= '0';
+        count_set_tmp <= '0';
+		count_ce_tmp <= '0';
 		count_threshold <= (others => '0');
 		
         case state_reg is
             when init =>
                 tim_threshold <= std_logic_vector(to_unsigned(STARTUP_DELAY - 1, TIM_THRESHOLD_WIDTH));
-		      	tim_set <= '1';
+		      	tim_set_tmp <= '1';
                 state_next <= startup;
                 
             when startup =>
                 if (tim_alert = '1') then
                     tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
-					tim_set <= '1';
+					tim_set_tmp <= '1';
                     count_threshold <= std_logic_vector(to_unsigned(COUNT_VALID_LINES, COUNT_THRESHOLD_WIDTH));
-                    count_set <= '1';
+                    count_set_tmp <= '1';
                     state_next <= compute_valid;    
                 end if;
                 
@@ -141,30 +145,30 @@ begin
                 valid_out_tmp <= '1';                       
                 if (tim_alert = '1') then
                     tim_threshold <= std_logic_vector(to_unsigned(INVALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
-					tim_set <= '1';
+					tim_set_tmp <= '1';
                     state_next <= compute_invalid;
                 end if;
                 
                 if (count_alert = '1') then
                     valid_out_tmp <= '0';
                     tim_threshold <= std_logic_vector(to_unsigned(COUNT_TRANSIT_PIXELS - 1, TIM_THRESHOLD_WIDTH));
-                    tim_set <= '1';
+                    tim_set_tmp <= '1';
                     state_next <= overlap_image;
-                    count_clear <= '1';
+                    count_clear_tmp <= '1';
                 end if;
             
             when compute_invalid =>
                 if (tim_alert = '1') then -- prechod na dalsi riadok
                     tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
-					tim_set <= '1';
+					tim_set_tmp <= '1';
                     state_next <= compute_valid;
-                    count_ce <= '1';                                                     
+                    count_ce_tmp <= '1';                                                     
                 end if;
             
             when overlap_image =>
                 if (tim_alert = '1') then
                     tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
-                    tim_set <= '1';
+                    tim_set_tmp <= '1';
                     state_next <= compute_valid;
                 end if;
                                           
@@ -174,6 +178,14 @@ begin
         end case;     
     end process control_logic;
     
-    valid <= valid_out_tmp and run;
+    tim_ce <= run;
+    tim_set <= tim_set_tmp and run;
+    tim_clear <= tim_clear_tmp and run;
     
+    count_ce <= count_ce_tmp and run;
+    count_set <= count_set_tmp and run;
+    count_clear <= count_clear_tmp and run;
+    
+    valid <= valid_out_tmp and run;
+
 end Behavioral;
