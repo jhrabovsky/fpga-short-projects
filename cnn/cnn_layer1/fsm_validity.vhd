@@ -23,9 +23,9 @@ end fsm;
 architecture Behavioral of fsm is
 
 constant STARTUP_DELAY_PART1 : integer := KERNEL_SIZE * (2 * KERNEL_SIZE - 1) + 2;
-constant STARTUP_DELAY_PART2 : integer := (KERNEL_SIZE - 1) * (INPUT_ROW_LENGTH - 2 * KERNEL_SIZE + 1);
+constant STARTUP_DELAY_PART2 : integer := (KERNEL_SIZE - 1) * (INPUT_ROW_LENGTH - 2 * KERNEL_SIZE + 1) + 1; -- za conv_2d vlozeny REG
 constant STARTUP_DELAY_TREE : natural := log2c(NO_INPUT_MAPS); 
-constant STARTUP_DELAY : integer := STARTUP_DELAY_PART1 + STARTUP_DELAY_PART2 + STARTUP_DELAY_TREE + 1; -- za conv_2d vlozeny REG
+constant STARTUP_DELAY : integer := STARTUP_DELAY_PART1 + STARTUP_DELAY_PART2 + STARTUP_DELAY_TREE; 
 
 constant INVALID_LINE_PART : integer := KERNEL_SIZE - 1;
 constant VALID_LINE_PART : integer := INPUT_ROW_LENGTH - KERNEL_SIZE + 1;
@@ -71,7 +71,7 @@ signal count_clear_tmp, count_set_tmp, count_ce_tmp : std_logic;
 
 signal count_threshold : std_logic_vector(COUNT_THRESHOLD_WIDTH - 1 downto 0);
 constant COUNT_VALID_LINES : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
-constant COUNT_TRANSIT_PIXELS : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1; -- 1 CLK stojim e+ste v stave compute_valid, aby som identifikoval prechod na stav overlap_image;
+constant COUNT_TRANSIT_PIXELS : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1; -- 1 CLK stojim este v stave compute_valid, aby som identifikoval prechod na stav overlap_image;
 
 begin
 
