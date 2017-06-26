@@ -22,8 +22,8 @@ end fsm;
 
 architecture Behavioral of fsm is
 
-constant STARTUP_DELAY_PART1 : integer := KERNEL_SIZE * (2 * KERNEL_SIZE - 1) + 2;
-constant STARTUP_DELAY_PART2 : integer := (KERNEL_SIZE - 1) * (INPUT_ROW_LENGTH - 2 * KERNEL_SIZE + 1) + 1; -- za conv_2d vlozeny REG
+constant STARTUP_DELAY_PART1 : integer := KERNEL_SIZE * (2 * KERNEL_SIZE - 1) + 2; -- +2 = 1xOUTPUT-REG & 1xREG-in-the-last-DSP(between-mult&add) 
+constant STARTUP_DELAY_PART2 : integer := (KERNEL_SIZE - 1) * (INPUT_ROW_LENGTH - 2 * KERNEL_SIZE + 1) + 1; -- +1 = OUTPUT-REG
 constant STARTUP_DELAY_TREE : natural := log2c(NO_INPUT_MAPS); 
 constant STARTUP_DELAY : integer := STARTUP_DELAY_PART1 + STARTUP_DELAY_PART2 + STARTUP_DELAY_TREE; 
 
@@ -55,7 +55,7 @@ signal valid_out_tmp : std_logic;
 --      TIMER PARAMS      --
 ----------------------------
 
-constant TIM_THRESHOLD_WIDTH : natural := 8;
+constant TIM_THRESHOLD_WIDTH : natural := 8; -- TODO: compute threshold via log2c();
 signal tim_clear, tim_set, tim_alert, tim_ce : std_logic;
 signal tim_clear_tmp, tim_set_tmp: std_logic;
 
@@ -65,7 +65,7 @@ signal tim_threshold : std_logic_vector(TIM_THRESHOLD_WIDTH - 1 downto 0);
 --      LINE-COUNTER PARAMS --
 ------------------------------
 
-constant COUNT_THRESHOLD_WIDTH : natural := 8; -- mozem zlepsit, ked pouzijem log2c na (K-1)
+constant COUNT_THRESHOLD_WIDTH : natural := 8; -- TODO: compute threshold via log2c(); 
 signal count_clear, count_set, count_alert, count_ce : std_logic;
 signal count_clear_tmp, count_set_tmp, count_ce_tmp : std_logic;
 

@@ -251,7 +251,7 @@ begin
         res_from_1_pos((I+1) * L1_RESULT_WIDTH - 1 downto I * L1_RESULT_WIDTH) <= (others => '0') when (res_from_1((I+1) * L1_RESULT_WIDTH - 1) = '1') else
                           res_from_1((I+1) * L1_RESULT_WIDTH - 1 downto I * L1_RESULT_WIDTH);
     end generate activation_function_1;             
-                                       
+                      
     -----------------------------
     --      L2 CONV LAYER      --
     -----------------------------
@@ -288,7 +288,7 @@ begin
         res_from_2_pos((I+1) * L2_RESULT_WIDTH - 1 downto I * L2_RESULT_WIDTH) <= (others => '0') when (res_from_2((I+1) * L2_RESULT_WIDTH - 1) = '1') else
                           res_from_2((I+1) * L2_RESULT_WIDTH - 1 downto I * L2_RESULT_WIDTH);
     end generate activation_function_2;
-        
+       
     --------------------------------------
     --      FSM - CONTROL PROCESSING    --
     --------------------------------------
