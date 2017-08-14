@@ -27,8 +27,8 @@ constant STARTUP_DELAY_PART2 : integer := (KERNEL_SIZE - 1) * (INPUT_ROW_LENGTH 
 constant STARTUP_DELAY_TREE : natural := log2c(NO_INPUT_MAPS); 
 constant STARTUP_DELAY : integer := STARTUP_DELAY_PART1 + STARTUP_DELAY_PART2 + STARTUP_DELAY_TREE; 
 
-constant INVALID_LINE_PART : integer := KERNEL_SIZE - 1;
-constant VALID_LINE_PART : integer := INPUT_ROW_LENGTH - KERNEL_SIZE + 1;
+constant NO_INVALID_PIXELS_PER_LINE : integer := KERNEL_SIZE - 1; -- number of invalid pixels per line (vertical border crossing)
+constant NO_VALID_PIXELS_PER_LINE : integer := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; -- number of valid pixels per line (inside image)
 
 component counter_down_generic is
 	Generic (
@@ -51,54 +51,58 @@ signal state_next : state_type;
 
 signal valid_out_tmp : std_logic;
 
-----------------------------        
---      TIMER PARAMS      --
-----------------------------
+-------------------------------            
+--      PIXEL-COUNTER PARAMS --
+-------------------------------
 
-constant TIM_THRESHOLD_WIDTH : natural := 8; -- TODO: compute threshold via log2c();
-signal tim_clear, tim_set, tim_alert, tim_ce : std_logic;
-signal tim_clear_tmp, tim_set_tmp: std_logic;
+constant PIXEL_COUNTER_THRESHOLD_WIDTH : natural := 8; -- TODO: compute threshold via log2c();
+signal pixel_counter_clear, pixel_counter_set, pixel_counter_alert, pixel_counter_ce : std_logic;
+signal pixel_counter_clear_tmp, pixel_counter_set_tmp: std_logic;
 
-signal tim_threshold : std_logic_vector(TIM_THRESHOLD_WIDTH - 1 downto 0);
+signal pixel_counter_threshold : std_logic_vector(PIXEL_COUNTER_THRESHOLD_WIDTH - 1 downto 0);
 
 ------------------------------        
 --      LINE-COUNTER PARAMS --
 ------------------------------
 
-constant COUNT_THRESHOLD_WIDTH : natural := 8; -- TODO: compute threshold via log2c(); 
-signal count_clear, count_set, count_alert, count_ce : std_logic;
-signal count_clear_tmp, count_set_tmp, count_ce_tmp : std_logic;
+constant LINE_COUNTER_THRESHOLD_WIDTH : natural := 8; -- TODO: compute threshold via log2c(); 
+signal line_counter_clear, line_counter_set, line_counter_alert, line_counter_ce : std_logic;
+signal line_counter_clear_tmp, line_counter_set_tmp, line_counter_ce_tmp : std_logic;
 
-signal count_threshold : std_logic_vector(COUNT_THRESHOLD_WIDTH - 1 downto 0);
-constant COUNT_VALID_LINES : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
-constant COUNT_TRANSIT_PIXELS : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1; -- 1 CLK stojim este v stave inside_image, aby som identifikoval prechod na stav horizontal_border;
+signal line_counter_threshold : std_logic_vector(LINE_COUNTER_THRESHOLD_WIDTH - 1 downto 0);
+
+-- number of valid lines per input image
+constant LINE_COUNTER_NO_VALID_LINES : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
+-- number of PIXELS per vertical border transition
+constant NO_INVALID_PIXELS_PER_TRANSITION : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1;
+                                                                                              -- 1 CLK stojim este v stave inside_image, aby som identifikoval prechod na stav horizontal_border;
 
 begin
 
-	timer : counter_down_generic
+	pixel_counterer : counter_down_generic
 		generic map (
-			THRESHOLD_WIDTH => TIM_THRESHOLD_WIDTH
+			THRESHOLD_WIDTH => PIXEL_COUNTER_THRESHOLD_WIDTH
 		)
 		port map (
 			clk => clk,
-			ce => tim_ce,
-			clear => tim_clear,
-			set => tim_set,
-			threshold => tim_threshold,
-			tc => tim_alert
+			ce => pixel_counter_ce,
+			clear => pixel_counter_clear,
+			set => pixel_counter_set,
+			threshold => pixel_counter_threshold,
+			tc => pixel_counter_alert
 		);
 				
 	line_counter : counter_down_generic
 	   generic map (
-                THRESHOLD_WIDTH => COUNT_THRESHOLD_WIDTH
+                THRESHOLD_WIDTH => LINE_COUNTER_THRESHOLD_WIDTH
             )
             port map (
                 clk => clk,
-                ce => count_ce,
-                clear => count_clear,
-                set => count_set,
-                threshold => count_threshold,
-                tc => count_alert
+                ce => line_counter_ce,
+                clear => line_counter_clear,
+                set => line_counter_set,
+                threshold => line_counter_threshold,
+                tc => line_counter_alert
             );
 	               
     registers: process (clk) is
@@ -112,66 +116,67 @@ begin
         end if;
     end process registers;            
                 
-    control_logic: process (state_reg, tim_alert, count_alert) is
+    control_logic: process (state_reg, pixel_counter_alert, line_counter_alert) is
     begin
         state_next <= state_reg;
         valid_out_tmp <= '0';
 		
-		tim_clear_tmp <= '0';
-		tim_set_tmp <= '0';
-		tim_threshold <= (others => '0');
+		pixel_counter_clear_tmp <= '0';
+		pixel_counter_set_tmp <= '0';
+		pixel_counter_threshold <= (others => '0');
 
-        count_clear_tmp <= '0';
-        count_set_tmp <= '0';
-		count_ce_tmp <= '0';
-		count_threshold <= (others => '0');
+        line_counter_clear_tmp <= '0';
+        line_counter_set_tmp <= '0';
+		line_counter_ce_tmp <= '0';
+		line_counter_threshold <= (others => '0');
 		
         case state_reg is
             when init =>
-                tim_threshold <= std_logic_vector(to_unsigned(STARTUP_DELAY - 1, TIM_THRESHOLD_WIDTH));
-		      	tim_set_tmp <= '1';
+                pixel_counter_threshold <= std_logic_vector(to_unsigned(STARTUP_DELAY - 1, PIXEL_COUNTER_THRESHOLD_WIDTH));
+		      	pixel_counter_set_tmp <= '1';
                 state_next <= start_up;
                 
             when start_up =>
-                if (tim_alert = '1') then
-                    tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
-					tim_set_tmp <= '1';
-                    count_threshold <= std_logic_vector(to_unsigned(COUNT_VALID_LINES, COUNT_THRESHOLD_WIDTH));
-                    count_set_tmp <= '1';
+                if (pixel_counter_alert = '1') then
+                    pixel_counter_threshold <= std_logic_vector(to_unsigned(NO_VALID_PIXELS_PER_LINE - 1, PIXEL_COUNTER_THRESHOLD_WIDTH));
+					pixel_counter_set_tmp <= '1';
+                    line_counter_threshold <= std_logic_vector(to_unsigned(LINE_COUNTER_NO_VALID_LINES, LINE_COUNTER_THRESHOLD_WIDTH));
+                    line_counter_set_tmp <= '1';
                     state_next <= inside_image;    
                 end if;
                 
             when inside_image =>
                 -- PRIORITY = 2
                 valid_out_tmp <= '1';                       
-                if (tim_alert = '1') then
-                    tim_threshold <= std_logic_vector(to_unsigned(INVALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
-					tim_set_tmp <= '1';
+                if (pixel_counter_alert = '1') then
+                    pixel_counter_threshold <= std_logic_vector(to_unsigned(NO_INVALID_PIXELS_PER_LINE - 1, PIXEL_COUNTER_THRESHOLD_WIDTH));
+					pixel_counter_set_tmp <= '1';
                     state_next <= vertical_border;
                 end if;
                 
                 -- PRIORITY = 1
-                if (count_alert = '1') then
-                    valid_out_tmp <= '0'; -- [?] WHY cannot I count one cycle less and set the invalidity when in the overlap_image state?
-                                          -- Because I count the lines with COUNT and so the 1 line earlier reaction is inappropriate. 
-                    tim_threshold <= std_logic_vector(to_unsigned(COUNT_TRANSIT_PIXELS - 1, TIM_THRESHOLD_WIDTH));
-                    tim_set_tmp <= '1';
+                if (line_counter_alert = '1') then
+                    -- [?] WHY cannot I count one cycle less and set the invalidity when in the overlap_image state?
+                     -- Because I count the lines with COUNT and so the 1 line earlier reaction is inappropriate.
+                    valid_out_tmp <= '0';  
+                    pixel_counter_threshold <= std_logic_vector(to_unsigned(NO_INVALID_PIXELS_PER_TRANSITION - 1, PIXEL_COUNTER_THRESHOLD_WIDTH));
+                    pixel_counter_set_tmp <= '1';
                     state_next <= horizontal_border;
-                    count_clear_tmp <= '1';
+                    line_counter_clear_tmp <= '1';
                 end if;
             
             when vertical_border =>
-                if (tim_alert = '1') then -- prechod na dalsi riadok
-                    tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
-					tim_set_tmp <= '1';
+                if (pixel_counter_alert = '1') then -- prechod na dalsi riadok
+                    pixel_counter_threshold <= std_logic_vector(to_unsigned(NO_VALID_PIXELS_PER_LINE - 1, PIXEL_COUNTER_THRESHOLD_WIDTH));
+					pixel_counter_set_tmp <= '1';
                     state_next <= inside_image;
-                    count_ce_tmp <= '1';                                                     
+                    line_counter_ce_tmp <= '1'; -- increment a value of the line counter because of the transition to the next line                                                     
                 end if;
             
             when horizontal_border =>
-                if (tim_alert = '1') then
-                    tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
-                    tim_set_tmp <= '1';
+                if (pixel_counter_alert = '1') then
+                    pixel_counter_threshold <= std_logic_vector(to_unsigned(NO_VALID_PIXELS_PER_LINE - 1, PIXEL_COUNTER_THRESHOLD_WIDTH));
+                    pixel_counter_set_tmp <= '1';
                     state_next <= inside_image;
                 end if;
                                           
@@ -181,13 +186,13 @@ begin
         end case;     
     end process control_logic;
     
-    tim_ce <= run;
-    tim_set <= tim_set_tmp and run;
-    tim_clear <= tim_clear_tmp and run;
+    pixel_counter_ce <= run;
+    pixel_counter_set <= pixel_counter_set_tmp and run;
+    pixel_counter_clear <= pixel_counter_clear_tmp and run;
     
-    count_ce <= count_ce_tmp and run;
-    count_set <= count_set_tmp and run;
-    count_clear <= count_clear_tmp and run;
+    line_counter_ce <= line_counter_ce_tmp and run;
+    line_counter_set <= line_counter_set_tmp and run;
+    line_counter_clear <= line_counter_clear_tmp and run;
     
     valid <= valid_out_tmp and run;
 
