@@ -45,7 +45,7 @@ component counter_down_generic is
     );
 end component;
 
-type state_type is (init, startup, compute_valid, compute_invalid, overlap_image);
+type state_type is (init, start_up, inside_image, vertical_border, horizontal_border);
 signal state_reg : state_type := init;
 signal state_next : state_type;
 
@@ -71,7 +71,7 @@ signal count_clear_tmp, count_set_tmp, count_ce_tmp : std_logic;
 
 signal count_threshold : std_logic_vector(COUNT_THRESHOLD_WIDTH - 1 downto 0);
 constant COUNT_VALID_LINES : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
-constant COUNT_TRANSIT_PIXELS : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1; -- 1 CLK stojim este v stave compute_valid, aby som identifikoval prechod na stav overlap_image;
+constant COUNT_TRANSIT_PIXELS : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1; -- 1 CLK stojim este v stave inside_image, aby som identifikoval prechod na stav horizontal_border;
 
 begin
 
@@ -130,46 +130,48 @@ begin
             when init =>
                 tim_threshold <= std_logic_vector(to_unsigned(STARTUP_DELAY - 1, TIM_THRESHOLD_WIDTH));
 		      	tim_set_tmp <= '1';
-                state_next <= startup;
+                state_next <= start_up;
                 
-            when startup =>
+            when start_up =>
                 if (tim_alert = '1') then
                     tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
 					tim_set_tmp <= '1';
                     count_threshold <= std_logic_vector(to_unsigned(COUNT_VALID_LINES, COUNT_THRESHOLD_WIDTH));
                     count_set_tmp <= '1';
-                    state_next <= compute_valid;    
+                    state_next <= inside_image;    
                 end if;
                 
-            when compute_valid =>                
+            when inside_image =>
+                -- PRIORITY = 2
                 valid_out_tmp <= '1';                       
                 if (tim_alert = '1') then
                     tim_threshold <= std_logic_vector(to_unsigned(INVALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
 					tim_set_tmp <= '1';
-                    state_next <= compute_invalid;
+                    state_next <= vertical_border;
                 end if;
                 
+                -- PRIORITY = 1
                 if (count_alert = '1') then
                     valid_out_tmp <= '0';
                     tim_threshold <= std_logic_vector(to_unsigned(COUNT_TRANSIT_PIXELS - 1, TIM_THRESHOLD_WIDTH));
                     tim_set_tmp <= '1';
-                    state_next <= overlap_image;
+                    state_next <= horizontal_border;
                     count_clear_tmp <= '1';
                 end if;
             
-            when compute_invalid =>
+            when vertical_border =>
                 if (tim_alert = '1') then -- prechod na dalsi riadok
                     tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
 					tim_set_tmp <= '1';
-                    state_next <= compute_valid;
+                    state_next <= inside_image;
                     count_ce_tmp <= '1';                                                     
                 end if;
             
-            when overlap_image =>
+            when horizontal_border =>
                 if (tim_alert = '1') then
                     tim_threshold <= std_logic_vector(to_unsigned(VALID_LINE_PART - 1, TIM_THRESHOLD_WIDTH));
                     tim_set_tmp <= '1';
-                    state_next <= compute_valid;
+                    state_next <= inside_image;
                 end if;
                                           
             when others =>
