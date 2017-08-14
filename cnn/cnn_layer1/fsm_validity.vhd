@@ -72,7 +72,7 @@ signal line_counter_clear_tmp, line_counter_set_tmp, line_counter_ce_tmp : std_l
 signal line_counter_threshold : std_logic_vector(LINE_COUNTER_THRESHOLD_WIDTH - 1 downto 0);
 
 -- number of valid lines per input image
-constant LINE_COUNTER_NO_VALID_LINES : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
+constant NO_VALID_LINES_PER_IMAGE : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
 -- number of PIXELS per vertical border transition
 constant NO_INVALID_PIXELS_PER_TRANSITION : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1;
                                                                                               -- 1 CLK stojim este v stave inside_image, aby som identifikoval prechod na stav horizontal_border;
@@ -140,7 +140,7 @@ begin
                 if (pixel_counter_alert = '1') then
                     pixel_counter_threshold <= std_logic_vector(to_unsigned(NO_VALID_PIXELS_PER_LINE - 1, PIXEL_COUNTER_THRESHOLD_WIDTH));
 					pixel_counter_set_tmp <= '1';
-                    line_counter_threshold <= std_logic_vector(to_unsigned(LINE_COUNTER_NO_VALID_LINES, LINE_COUNTER_THRESHOLD_WIDTH));
+                    line_counter_threshold <= std_logic_vector(to_unsigned(NO_VALID_LINES_PER_IMAGE, LINE_COUNTER_THRESHOLD_WIDTH));
                     line_counter_set_tmp <= '1';
                     state_next <= inside_image;    
                 end if;
