@@ -150,7 +150,8 @@ begin
                 end if;
                 
                 if (count_alert = '1') then
-                    valid_out_tmp <= '0';
+                    valid_out_tmp <= '0'; -- [?] WHY cannot I count one cycle less and set the invalidity when in the overlap_image state?
+                                          -- Because I count the lines with COUNT and so the 1 line earlier reaction is inappropriate. 
                     tim_threshold <= std_logic_vector(to_unsigned(COUNT_TRANSIT_PIXELS - 1, TIM_THRESHOLD_WIDTH));
                     tim_set_tmp <= '1';
                     state_next <= overlap_image;
