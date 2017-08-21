@@ -75,7 +75,7 @@ signal line_counter_threshold : std_logic_vector(LINE_COUNTER_THRESHOLD_WIDTH - 
 constant NO_VALID_LINES_PER_IMAGE : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
 -- number of PIXELS per vertical border transition
 constant NO_INVALID_PIXELS_PER_TRANSITION : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1;
-                                                                                              -- 1 CLK stojim este v stave inside_image, aby som identifikoval prechod na stav horizontal_border;
+-- the FSM waits for 1 CLK more in inside_image state in order to identify transition to horizontal_border
 
 begin
 
@@ -166,7 +166,7 @@ begin
                 end if;
             
             when vertical_border =>
-                if (pixel_counter_alert = '1') then -- prechod na dalsi riadok
+                if (pixel_counter_alert = '1') then -- transition to the next line
                     pixel_counter_threshold <= std_logic_vector(to_unsigned(NO_VALID_PIXELS_PER_LINE - 1, PIXEL_COUNTER_THRESHOLD_WIDTH));
 					pixel_counter_set_tmp <= '1';
                     state_next <= inside_image;
