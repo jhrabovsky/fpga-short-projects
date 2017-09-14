@@ -7,9 +7,8 @@ use work.misc_pkg.all;
 
 entity fsm is
     Generic (
-        NO_INPUT_MAPS : natural := 1;
-        INPUT_ROW_LENGTH : integer := 32;
-        KERNEL_SIZE : integer := 5
+        INPUT_ROW_LENGTH : integer := 9;
+        KERNEL_SIZE : integer := 3
     );
     
     Port ( 
@@ -22,10 +21,23 @@ end fsm;
 
 architecture Behavioral of fsm is
 
-constant STARTUP_DELAY_PART1 : integer := KERNEL_SIZE * (2 * KERNEL_SIZE - 1) + 2; -- +2 = 1xOUTPUT-REG & 1xREG-in-the-last-DSP(between-mult&add) 
+function log2c (N : integer) return integer is
+    variable m, p : integer;
+    begin
+        m := 0;
+        p := 1;
+        
+        while p < N loop
+            m := m + 1;
+            p := p * 2;
+        end loop;
+        
+        return m;
+    end log2c;
+
+constant STARTUP_DELAY_PART1 : integer := KERNEL_SIZE * (2 * KERNEL_SIZE - 1) + 2; -- +2 = 1xOUTPUT-REG and 1xREG in the last DSP (between multilpier & adder) 
 constant STARTUP_DELAY_PART2 : integer := (KERNEL_SIZE - 1) * (INPUT_ROW_LENGTH - 2 * KERNEL_SIZE + 1) + 1; -- +1 = OUTPUT-REG
-constant STARTUP_DELAY_TREE : natural := log2c(NO_INPUT_MAPS); 
-constant STARTUP_DELAY : integer := STARTUP_DELAY_PART1 + STARTUP_DELAY_PART2 + STARTUP_DELAY_TREE; 
+constant STARTUP_DELAY : integer := STARTUP_DELAY_PART1 + STARTUP_DELAY_PART2; 
 
 constant NO_INVALID_PIXELS_PER_LINE : integer := KERNEL_SIZE - 1; -- number of invalid pixels per line (vertical border crossing)
 constant NO_VALID_PIXELS_PER_LINE : integer := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; -- number of valid pixels per line (inside image)
@@ -55,7 +67,8 @@ signal valid_out_tmp : std_logic;
 --      PIXEL-COUNTER PARAMS --
 -------------------------------
 
-constant PIXEL_COUNTER_THRESHOLD_WIDTH : natural := 8; -- TODO: compute threshold via log2c();
+constant PIXEL_COUNTER_THRESHOLD_WIDTH : natural := log2c(STARTUP_DELAY); -- PIXEL_COUNTER uses various thresholds during processing => STARTUP_DELAY, NO_VALID_PIXELS_PER_LINE, and NO_INVALID_PIXELS_PER_LINE.
+                                                       -- because of the required bit-width the maximum of the mentioned values has to be assumed => considering their structure, the STARTUP_DELAY should be always the maximum of them.
 signal pixel_counter_clear, pixel_counter_set, pixel_counter_alert, pixel_counter_ce : std_logic;
 signal pixel_counter_clear_tmp, pixel_counter_set_tmp: std_logic;
 
@@ -65,7 +78,7 @@ signal pixel_counter_threshold : std_logic_vector(PIXEL_COUNTER_THRESHOLD_WIDTH 
 --      LINE-COUNTER PARAMS --
 ------------------------------
 
-constant LINE_COUNTER_THRESHOLD_WIDTH : natural := 8; -- TODO: compute threshold via log2c(); 
+constant LINE_COUNTER_THRESHOLD_WIDTH : natural := log2c(NO_VALID_LINES_PER_IMAGE); -- LINE_COUNTER uses only NO_VALID_LINES_PER_IMAGE as a threshold. 
 signal line_counter_clear, line_counter_set, line_counter_alert, line_counter_ce : std_logic;
 signal line_counter_clear_tmp, line_counter_set_tmp, line_counter_ce_tmp : std_logic;
 
@@ -79,7 +92,7 @@ constant NO_INVALID_PIXELS_PER_TRANSITION : natural := (KERNEL_SIZE - 1) * INPUT
 
 begin
 
-	pixel_counterer : counter_down_generic
+	pixel_counter : counter_down_generic
 		generic map (
 			THRESHOLD_WIDTH => PIXEL_COUNTER_THRESHOLD_WIDTH
 		)

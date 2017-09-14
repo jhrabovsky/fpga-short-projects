@@ -95,12 +95,15 @@ constant DATA_WIDTH : natural := DATA_INTEGER_WIDTH + DATA_FRACTION_WIDTH;
 constant COEF_WIDTH : natural := COEF_INTEGER_WIDTH + COEF_FRACTION_WIDTH;
 constant RESULT_WIDTH : natural := RESULT_INTEGER_WIDTH + RESULT_FRACTION_WIDTH;
 constant NO_BITS_PER_KERNEL : natural := (KERNEL_SIZE**2) * COEF_WIDTH;
+constant ADDER_TREE_DELAY : natural := log2c(NO_INPUT_MAPS);
 
 ---------------------------------------
 --				SIGNALS 			 --
 ---------------------------------------
 
-signal from_conv_to_tree : std_logic_vector(NO_OUTPUT_MAPS * NO_INPUT_MAPS * RESULT_WIDTH - 1 downto 0);
+signal from_conv_to_trees : std_logic_vector(NO_OUTPUT_MAPS * NO_INPUT_MAPS * RESULT_WIDTH - 1 downto 0);
+signal adder_trees_delay : std_logic_vector(ADDER_TREE_DELAY - 1 downto 0);
+signal valid_from_fsm : std_logic;
 
 begin
     ---------------------------------------
@@ -124,7 +127,7 @@ begin
 				port map (
 					din => din((I+1) * DATA_WIDTH - 1 downto I * DATA_WIDTH),
 					w => w(J * NO_INPUT_MAPS * NO_BITS_PER_KERNEL + (I+1) * NO_BITS_PER_KERNEL - 1 downto J * NO_INPUT_MAPS * NO_BITS_PER_KERNEL + I * NO_BITS_PER_KERNEL),
-                    dout => from_conv_to_tree (J * NO_INPUT_MAPS * RESULT_WIDTH + (I+1) * RESULT_WIDTH - 1 downto J * NO_INPUT_MAPS * RESULT_WIDTH + I * RESULT_WIDTH),
+                    dout => from_conv_to_trees (J * NO_INPUT_MAPS * RESULT_WIDTH + (I+1) * RESULT_WIDTH - 1 downto J * NO_INPUT_MAPS * RESULT_WIDTH + I * RESULT_WIDTH),
 					clk => clk,
 					ce => valid_in,
 					coef_load => coef_load,
@@ -138,7 +141,7 @@ begin
 				DATA_WIDTH => RESULT_WIDTH
 			)
 			port map (
-				din => from_conv_to_tree ((J+1) * NO_INPUT_MAPS * RESULT_WIDTH - 1 downto J * NO_INPUT_MAPS * RESULT_WIDTH),
+				din => from_conv_to_trees ((J+1) * NO_INPUT_MAPS * RESULT_WIDTH - 1 downto J * NO_INPUT_MAPS * RESULT_WIDTH),
 				dout => dout ((J+1) * RESULT_WIDTH - 1 downto J * RESULT_WIDTH),
 				clk => clk,
 				ce => valid_in,
@@ -153,7 +156,6 @@ begin
     
     fsm_inst : fsm
         generic map (
-            NO_INPUT_MAPS => NO_INPUT_MAPS,
             INPUT_ROW_LENGTH => INPUT_ROW_SIZE,
             KERNEL_SIZE => KERNEL_SIZE
         )
@@ -161,7 +163,24 @@ begin
             clk => clk,
             rst => rst,
             run => valid_in,
-            valid => valid_out
+            valid => valid_from_fsm
         );
+
+    --------------------------------------------------------
+    -- DELAY OF RESULTS CAUSED BY GOING THROUG ADDER TREE --
+    --------------------------------------------------------   
         
+    result_valid_delay: process (clk, rst, valid_in) is
+    begin
+    	if (rising_edge(clk)) then
+    		if (rst = '1') then
+    			adder_trees_delay <= (others => '0');
+    		else then
+    			adder_trees_delay <= adder_trees_delay(ADDER_TREE_DELAY - 2 downto 1) & valid_from_fsm;
+    		end if;
+    	end if;
+    end process result_valid_delay;
+
+    valid_out <= adder_trees_delay(ADDER_TREE_DELAY - 1);
+    
 end rtl;
