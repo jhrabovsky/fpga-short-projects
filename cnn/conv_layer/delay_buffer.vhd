@@ -17,19 +17,41 @@ end delay_buffer;
 
 architecture Behavioral of delay_buffer is
 
-signal buff_reg : std_logic_vector(DATA_WIDTH * LENGTH - 1 downto 0);
- 
+-- 1bit increased the bit-width of the register because of the zero length => vector must be at least 1 bit long 
+signal buff_reg : std_logic_vector(DATA_WIDTH * LENGTH downto 0);
+
 begin
     
-    process (clk) is
-    begin
-        if (rising_edge(clk)) then
-            if (ce = '1') then
-                buff_reg <= buff_reg(DATA_WIDTH * (LENGTH-1) - 1 downto 0) & din;
-            end if;
-        end if; 
-    end process;
+    atleast_2_length_gen: if (LENGTH > 1) generate
+        process (clk) is
+        begin
+            if (rising_edge(clk)) then
+                if (ce = '1') then
+                    -- the MSB '0' is added because of the zero length vector
+                    buff_reg <= '0' & buff_reg(DATA_WIDTH * (LENGTH-1) - 1 downto 0) & din;
+                end if;
+            end if; 
+        end process;
 
-    dout <= buff_reg(DATA_WIDTH * LENGTH - 1 downto DATA_WIDTH * (LENGTH-1));
+        dout <= buff_reg(DATA_WIDTH * LENGTH - 1 downto DATA_WIDTH * (LENGTH-1));
+    end generate;
+
+    one_length_gen: if (LENGTH = 1) generate
+        process (clk) is
+        begin
+            if (rising_edge(clk)) then
+                if (ce = '1') then
+                    -- the MSB '0' is added because of the zero length vector
+                    buff_reg <= '0' & din;
+                end if;
+            end if; 
+        end process;
+
+        dout <= buff_reg(DATA_WIDTH - 1 downto 0);
+    end generate;
+    
+    zero_length_gen: if (LENGTH = 0) generate
+        dout <= din;
+    end generate;
 
 end Behavioral;

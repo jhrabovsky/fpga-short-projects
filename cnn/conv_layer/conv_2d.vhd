@@ -26,11 +26,13 @@ entity conv_2d is
     );
 end conv_2d;
 
-architecture Behavioral of conv_2d is
+architecture rtl of conv_2d is
 
 ---------------------------------------------
 --               COMPONENTS                --
 ---------------------------------------------
+
+-- TODO: add bias to the first SE of the chain
 
 component se_chain is
     Generic (
@@ -79,18 +81,21 @@ component adder is
     );
 end component;
 
-signal bias : std_logic_vector(RESULT_WIDTH - 1 downto 0);
+component switching_block is
+    Generic (
+        INPUT_ROW_LENGTH : natural;
+        KERNEL_SIZE : natural;
+        RESULT_WIDTH : natural 
+    );
+    Port (
+        dp_in : in std_logic_vector(KERNEL_SIZE * RESULT_WIDTH - 1 downto 0);
+        add_out : out std_logic_vector(KERNEL_SIZE * RESULT_WIDTH - 1 downto 0)
+    );
+end component;
+
 signal dp_from_se : std_logic_vector(RESULT_WIDTH * KERNEL_SIZE - 1 downto 0);
 
 constant BASE_DELAY_LENGTH : integer := abs(INPUT_ROW_LENGTH - 2*KERNEL_SIZE + 1);
-
-
-signal from_buffer_to_adder : std_logic_vector(RESULT_WIDTH * (KERNEL_SIZE - 1) - 1 downto 0);
-signal from_adder_to_buffer : std_logic_vector(RESULT_WIDTH * (KERNEL_SIZE - 1) - 1 downto 0);
-signal from_adder_to_adder : std_logic_vector(RESULT_WIDTH * (KERNEL_SIZE - 1) - 1 downto 0);
-
-
-
 signal from_buffer : std_logic_vector(RESULT_WIDTH * (KERNEL_SIZE - 1) - 1 downto 0);
 signal from_adder : std_logic_vector(RESULT_WIDTH * (KERNEL_SIZE - 1) - 1 downto 0);
 signal from_switch : std_logic_vector(RESULT_WIDTH * KERNEL_SIZE - 1 downto 0);
@@ -98,11 +103,11 @@ signal from_switch : std_logic_vector(RESULT_WIDTH * KERNEL_SIZE - 1 downto 0);
 signal dout_reg, dout_next : std_logic_vector(RESULT_WIDTH - 1 downto 0);
 
 begin
-
----------------------------------------------
---            COMPONENT INSTANCES          --
----------------------------------------------
     
+---------------------------------------------
+--            PART 1                       --
+---------------------------------------------
+
     se_chain_inst : se_chain
         generic map (
             KERNEL_SIZE => KERNEL_SIZE,
@@ -127,7 +132,19 @@ begin
 --            PART 2                       --
 ---------------------------------------------
 
+    switching_block_inst : switching_block
+        generic map (
+            INPUT_ROW_LENGTH => INPUT_ROW_LENGTH,
+            KERNEL_SIZE => KERNEL_SIZE,
+            RESULT_WIDTH => RESULT_WIDTH        
+        )
+        port map (
+            dp_in => dp_from_se,
+            add_out => from_switch
+        );
+
     gen_delay_buffers: for I in (KERNEL_SIZE - 2) downto 0 generate
+        
         last_buffer_without_adder_gen: if (I = KERNEL_SIZE - 2) generate
             delay_buffer_last : delay_buffer 
                 generic map (
@@ -140,6 +157,7 @@ begin
                     clk => clk, 
                     ce => ce
                 );
+
         other_buffers_gen: if (I < KERNEL_SIZE - 2) generate
             delay_buffer_i : delay_buffer 
                 generic map (
@@ -147,12 +165,13 @@ begin
                     DATA_WIDTH => RESULT_WIDTH
                 ) 
                 port map (
-                    din => from_adder(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I), 
+                    din => from_adder(RESULT_WIDTH * (I+2) - 1 downto RESULT_WIDTH * (I+1)), 
                     dout => from_buffer(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I), 
                     clk => clk, 
                     ce => ce
                 );
         end generate;
+    
     end generate;
 
     gen_adders: for I in (KERNEL_SIZE - 2) downto 0 generate
@@ -163,168 +182,11 @@ begin
             port map (
                 din_a => from_switch(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I),
                 din_b => from_buffer(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I),
-                dout => from_adder(RESULT_WIDTH * I - 1 downto RESULT_WIDTH * (I-1))
+                dout => from_adder(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I)
             );
     end generate;
 
     dout_next <= from_adder(RESULT_WIDTH - 1 downto 0);
-
----------------------------------------------
---            POSITIVE DELAY               --
----------------------------------------------
-
-    gen_positive_delay : if (BASE_DELAY_LENGTH > 0) generate
-
-        gen_delay_buffers: for I in (KERNEL_SIZE - 2) downto 0 generate
-            delay_buffer_inst : delay_buffer 
-                generic map (
-                    LENGTH => BASE_DELAY_LENGTH, 
-                    DATA_WIDTH => RESULT_WIDTH
-                ) 
-                port map (
-                    din => from_adder_to_buffer(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I), 
-                    dout => from_buffer_to_adder(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I), 
-                    clk => clk, 
-                    ce => ce
-                );
-        end generate gen_delay_buffers;
-        
-        gen_adders: for I in (KERNEL_SIZE - 2) downto 0 generate
-
-            gen_adder_i : if (I > 0) generate
-                adder_i : adder
-                    generic map (
-                        DATA_WIDTH => RESULT_WIDTH
-                    )
-                    port map (
-                        din_a => from_buffer_to_adder(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I),
-                        din_b => dp_from_se(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I),
-                        dout => from_adder_to_buffer(RESULT_WIDTH * I - 1 downto RESULT_WIDTH * (I-1))
-                    );
-            end generate;
-        
-            gen_adder_last : if (I = 0) generate
-                adder_last : adder
-                generic map (
-                    DATA_WIDTH => RESULT_WIDTH
-                )
-                port map (
-                    din_a => from_buffer_to_adder(RESULT_WIDTH - 1 downto 0),
-                    din_b => dp_from_se(RESULT_WIDTH - 1 downto 0),
-                    dout => dout_next
-                );                       
-            end generate;
-        end generate gen_adders;
-    
-    end generate gen_positive_delay;
-
----------------------------------------------
---            NEGATIVE DELAY               --
----------------------------------------------
-
-    gen_negative_delay : if (BASE_DELAY_LENGTH < 0) generate
-        
-        gen_delay_buffers: for I in (KERNEL_SIZE - 2) downto 0 generate
-            delay_buffer_inst : delay_buffer 
-                generic map (
-                    LENGTH => -BASE_DELAY_LENGTH, 
-                    DATA_WIDTH => RESULT_WIDTH
-                ) 
-                port map (
-                    din => from_adder_to_buffer(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I), 
-                    dout => from_buffer_to_adder(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I), 
-                    clk => clk, 
-                    ce => ce
-                );
-        end generate gen_delay_buffers;
-        
-        gen_adders: for I in (KERNEL_SIZE - 1) downto 0 generate
-            gen_adder_first : if (I = KERNEL_SIZE - 1) generate
-                -- TODO: add the bias specified as input port in entity
-                adder_first : adder
-                    generic map (
-                        DATA_WIDTH => RESULT_WIDTH
-                    )
-                    port map (
-                        din_a => bias,
-                        din_b => dp_from_se(RESULT_WIDTH * (KERNEL_SIZE - I) - 1 downto RESULT_WIDTH * (KERNEL_SIZE - I - 1)),
-                        dout => from_adder_to_buffer(RESULT_WIDTH * I - 1 downto RESULT_WIDTH * (I-1))
-                    );            
-            end generate;
-
-            gen_adder_i : if (I < KERNEL_SIZE - 1) and (I > 0) generate
-                adder_i : adder
-                    generic map (
-                        DATA_WIDTH => RESULT_WIDTH
-                    )
-                    port map (
-                        din_a => from_buffer_to_adder(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I),
-                        din_b => dp_from_se(RESULT_WIDTH * (KERNEL_SIZE - I) - 1 downto RESULT_WIDTH * (KERNEL_SIZE - I - 1)),
-                        dout => from_adder_to_buffer(RESULT_WIDTH * I - 1 downto RESULT_WIDTH * (I-1))
-                    );                        
-            end generate;
-        
-            gen_adder_last : if (I = 0) generate
-                adder_last : adder
-                generic map (
-                    DATA_WIDTH => RESULT_WIDTH
-                )
-                port map (
-                    din_a => from_buffer_to_adder(RESULT_WIDTH - 1 downto 0),
-                    din_b => dp_from_se(RESULT_WIDTH * (KERNEL_SIZE) - 1 downto RESULT_WIDTH * (KERNEL_SIZE - 1)),
-                    dout => dout_next
-                ); 
-            end generate;
-        end generate gen_adders;
-  
-    end generate gen_negative_delay;
-
----------------------------------------------
---            ZERO DELAY                   --
----------------------------------------------
-
-    gen_zero_delay : if (BASE_DELAY_LENGTH = 0) generate
-        
-        gen_adders: for I in (KERNEL_SIZE - 1) downto 0 generate
-            gen_adder_first : if (I = KERNEL_SIZE - 1) generate
-                -- TODO: doriesit pripocitavanie biasu    
-                adder_first : adder
-                    generic map (
-                        DATA_WIDTH => RESULT_WIDTH
-                    )
-                    port map (
-                        din_a => dp_from_se(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I),
-                        din_b => bias,
-                        dout => from_adder_to_adder(RESULT_WIDTH * I - 1 downto RESULT_WIDTH * (I-1))
-                    );            
-            end generate;
-
-            gen_adder_i : if (I < KERNEL_SIZE - 1) and (I > 0) generate
-                adder_i : adder
-                    generic map (
-                        DATA_WIDTH => RESULT_WIDTH
-                    )
-                    port map (
-                        din_a => from_adder_to_adder(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I),
-                        din_b => dp_from_se(RESULT_WIDTH * (I+1) - 1 downto RESULT_WIDTH * I),
-                        dout => from_adder_to_adder(RESULT_WIDTH * I - 1 downto RESULT_WIDTH * (I-1))
-                    );                        
-            end generate;
-        
-            gen_adder_last : if (I = 0) generate
-                adder_last : adder
-                generic map (
-                    DATA_WIDTH => RESULT_WIDTH
-                )
-                port map (
-                    din_a => from_adder_to_adder(RESULT_WIDTH - 1 downto 0),
-                    din_b => dp_from_se(RESULT_WIDTH - 1 downto 0),
-                    dout => dout_next
-                );                       
-            end generate;
-        end generate gen_adders;
-
-    end generate gen_zero_delay;
 
 ---------------------------------------------
 --            REGISTERS                    --
@@ -340,6 +202,5 @@ begin
 	end process registers;
 
     dout <= dout_reg;
-    bias <= (others => '0');  
 
-end Behavioral;
+end rtl;
