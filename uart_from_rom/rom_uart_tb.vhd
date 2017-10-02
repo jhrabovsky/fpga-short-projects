@@ -2,12 +2,12 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity top_tb is
-end top_tb;
+entity rom_uart_tb is
+end rom_uart_tb;
 
-architecture Behavioral of top_tb is
+architecture Behavioral of rom_uart_tb is
 
-component uart_top is
+component rom_uart is
     Port (
         UART_TXD_IN: in std_logic; -- PC->FPGA
         UART_RXD_OUT: out std_logic; -- FPGA->PC
@@ -17,7 +17,7 @@ component uart_top is
         BTN: in std_logic;
         AN: out std_logic_vector(7 downto 0)
     );    
-end component uart_top;
+end component rom_uart;
  
 constant T : time := 5ns;
 
@@ -27,7 +27,7 @@ signal data : std_logic_vector(9 downto 0);
 signal an : std_logic_vector(7 downto 0);
 
 begin
-    uut : uart_top
+    uut : rom_uart
         port map (
             UART_TXD_IN => rx,
             UART_RXD_OUT => tx,
@@ -64,7 +64,5 @@ begin
         end loop;      
           
     end process stimuli;    
-
-
 
 end Behavioral;

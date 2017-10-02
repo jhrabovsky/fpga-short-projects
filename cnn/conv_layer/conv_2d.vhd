@@ -199,7 +199,7 @@ begin
         
         gen_adders: for I in (KERNEL_SIZE - 1) downto 0 generate
             gen_adder_first : if (I = KERNEL_SIZE - 1) generate
-                -- TODO: doriesit pripocitavanie biasu    
+                -- TODO: add the bias specified as input port in entity
                 adder_first : adder
                     generic map (
                         DATA_WIDTH => RESULT_WIDTH

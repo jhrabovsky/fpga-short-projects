@@ -1,7 +1,9 @@
 
 library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use STD.TEXTIO.ALL;
+    use IEEE.STD_LOGIC_1164.ALL;
+    use STD.TEXTIO.ALL;
+
+use work.misc_pkg.all;
 
 entity top is
     Port ( 
@@ -34,35 +36,17 @@ component mem_reader is
     );
 end component;
 
-component uart_unit is
-    Generic (
-        DBITS: integer := 8;
-        SB_TICKS: integer := 16;
-        TRESHOLD_BITS: integer := 9;
-        TRESHOLD: integer := 326;
-        ADDR_BITS: integer := 2);
-        
-    Port ( 
-        clk, rst: in std_logic;
-        rx_i: in std_logic;
-        tx_o: out std_logic;
-        rx_empty, tx_full: out std_logic;
-        tx_data_i: in std_logic_vector(DBITS-1 downto 0);
-        rx_data_o: out std_logic_vector(DBITS-1 downto 0);
-        tx_uart, rx_uart: in std_logic);
-end component;
-
 component conv_layer is
 	Generic (
 		NO_INPUT_MAPS : natural;
 		NO_OUTPUT_MAPS : natural;		
 		INPUT_ROW_SIZE : natural;
 		KERNEL_SIZE : natural;
-		DATA_INTEGER_WIDTH : natural; -- zahrna aj znamienkovy bit
+		DATA_INTEGER_WIDTH : natural; -- including sign bit
 		DATA_FRACTION_WIDTH : natural;
-		COEF_INTEGER_WIDTH : natural; -- zahrna aj znamienkovy bit
+		COEF_INTEGER_WIDTH : natural; -- including sign bit
 		COEF_FRACTION_WIDTH : natural;
-		RESULT_INTEGER_WIDTH : natural; -- zahrna aj znamienkovy bit
+		RESULT_INTEGER_WIDTH : natural; -- including sign bit
 		RESULT_FRACTION_WIDTH : natural
 	);
 
@@ -76,24 +60,6 @@ component conv_layer is
         valid_in : in std_logic;
         valid_out : out std_logic
 	);
-end component;
-
-component bram_fifo_wrapper is
-    Generic (
-        DATA_LEN : natural
-    );
-    Port (
-        clk : in std_logic;
-        rst : in std_logic;
-        empty : out std_logic;
-        full : out std_logic;
-        rderr : out std_logic;
-        wrerr : out std_logic;
-        din : in std_logic_vector(DATA_LEN - 1 downto 0);
-        wren : in std_logic;
-        dout : out std_logic_vector(DATA_LEN - 1 downto 0);
-        rden : in std_logic
-    );      
 end component;
 
 -------------------------------
@@ -130,13 +96,13 @@ constant RESULT_FRACTION_LEN : natural := 12;
 constant RESULT_WIDTH : natural := RESULT_INTEGER_LEN + RESULT_FRACTION_LEN;
 
 --------------------------
---       MEMORY FORMAT  --
+--      MEMORY FORMAT   --
 --------------------------
 
 constant NO_IMAGES : natural := 10;
 constant NO_INPUTS : natural := NO_IMAGES * (IMAGE_ROW_LEN ** 2);
-constant ROM_ADDR_LEN : natural := 10;
-constant ROM_DATA_LEN : natural := 9;
+constant ROM_ADDR_LEN : natural := log2c(NO_INPUTS);
+constant ROM_DATA_LEN : natural := DATA_WIDTH;
 
 type STATE_T is (init, load, compute);
 
@@ -175,25 +141,6 @@ signal result : std_logic_vector(NO_OUTPUT_MAPS * RESULT_WIDTH - 1 downto 0);
 
 signal state_reg : STATE_T := init;
 signal state_next : STATE_T;
-
---------------------------
---      FIFO SIGNALS    --
---------------------------
-
-signal empty, full : std_logic_vector(NO_OUTPUT_MAPS - 1 downto 0);
-signal rderr, wrerr : std_logic_vector(NO_OUTPUT_MAPS - 1 downto 0);
-signal wren, rden : std_logic_vector(NO_OUTPUT_MAPS - 1 downto 0);
-signal fifo_dout : std_logic_vector(NO_OUTPUT_MAPS * RESULT_WIDTH - 1 downto 0);
-
---------------------------
---      UART SIGNALS    --
---------------------------
-
-constant UART_DATA_LEN : natural := 8;
-
-signal rx_empty, tx_full : std_logic;
-signal data_send, data_recv: std_logic_vector(UART_DATA_LEN - 1 downto 0);
-signal send_tick, recv_tick : std_logic;
 
 begin
 
@@ -292,55 +239,5 @@ begin
                 state_next <= init;
         end case; 
     end process next_state_output;
-
-    ---------------------------
-    --      OUTPUT MEMORY    --
-    ---------------------------
-
---    result_fifos_gen : for I in 0 to NO_OUTPUT_MAPS - 1 generate
---        bram_fifo_inst : bram_fifo_wrapper
---            generic map (
---                DATA_LEN => RESULT_WIDTH
---            )
---            port map (
---                clk => CLK100MHZ,
---                rst => RST,
---                empty => empty(I),
---                full => full(I),
---                rderr => rderr(I),
---                wrerr => wrerr(I),
---                din => result((I+1) * RESULT_WIDTH - 1 downto I * RESULT_WIDTH),
---                wren => wren(I),
---                dout => fifo_dout((I+1) * RESULT_WIDTH - 1 downto I * RESULT_WIDTH),
---                rden => rden(I)
---            );
-        
---        wren(I) <= valid_out;
---    end generate;  
-
-    --------------------------
-    --      UART            --
-    --------------------------
-
---    uart_unit_inst: uart_unit
---        generic map (
---            DBITS => UART_DATA_LEN,
---            SB_TICKS => 16,
---            TRESHOLD_BITS => 9,
---            TRESHOLD => 326, -- Baudrate=19200 for SYS_CLK=100MHZ
---            ADDR_BITS => 2 -- address bits for TX and RX FIFO buffers
---        )
---        port map (
---            clk=>CLK100MHZ,
---            rst=>RST,
---            rx_i=>UART_TXD_IN,
---            tx_o=>UART_RXD_OUT,
---            rx_empty=>rx_empty,
---            tx_full=>tx_full,
---            tx_data_i=>data_send,
---            rx_data_o=>data_recv,
---            tx_uart=>send_tick,
---            rx_uart=>recv_tick
---        );
 
 end RTL;

@@ -2,7 +2,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity maxpooling is
+entity maxpooling_layer is
     Generic (
         DATA_WIDTH : integer := 9;
         ROW_LENGTH : integer := 28
@@ -15,9 +15,9 @@ entity maxpooling is
         dout : out std_logic_vector(DATA_WIDTH - 1 downto 0);
         dout_valid : out std_logic
     );
-end maxpooling;
+end maxpooling_layer;
 
-architecture Behavioral of maxpooling is
+architecture Behavioral of maxpooling_layer is
 
 ------------------------------------------------
 --          COMPONENTS - DECLARATION          --

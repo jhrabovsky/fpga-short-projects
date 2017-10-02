@@ -3,7 +3,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity counter_down_generic is
+entity counter_down_dynamic is
 	Generic (
 		THRESHOLD_WIDTH : natural
 	);
@@ -16,9 +16,9 @@ entity counter_down_generic is
 		threshold : in std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
         tc : out std_logic -- terminal count
     );
-end counter_down_generic;
+end counter_down_dynamic;
 
-architecture Behavioral of counter_down_generic is
+architecture Behavioral of counter_down_dynamic is
 
 signal count_reg : unsigned(THRESHOLD_WIDTH - 1 downto 0) := (others => '1');
 signal count_next : unsigned(THRESHOLD_WIDTH - 1 downto 0);

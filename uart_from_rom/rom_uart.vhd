@@ -3,7 +3,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity uart_top is
+entity rom_uart is
     Port (
         UART_TXD_IN: in std_logic; -- PC->FPGA
         UART_RXD_OUT: out std_logic; -- FPGA->PC
@@ -13,9 +13,9 @@ entity uart_top is
         BTN: in std_logic;
         AN: out std_logic_vector(7 downto 0));
         
-end uart_top;
+end rom_uart;
 
-architecture arch of uart_top is
+architecture arch of rom_uart is
 
 component counter is
     Generic (

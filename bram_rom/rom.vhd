@@ -1,4 +1,4 @@
--- ZDROJ: ug901-vivado-synthesis (p146)
+-- SRC: ug901-vivado-synthesis (p146)
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -22,10 +22,10 @@ end rom;
 
 architecture Behavioral of rom is
 
--- bit_vector => fcia read() nepodporuje std_logic_vector.
+-- bit_vector => read() does not support std_logic_vector
 type ROM_T is array (0 to 2**ADDR_LENGTH - 1) of bit_vector(DATA_LENGTH - 1 downto 0);
 
--- impure function => ma vedlajsi efekt, tj jej vystup nezavisi len od vstupnych parametrov.
+-- impure function => has a side-effect, i.e. the result does not depend only on output but also on the values of other signals
 impure function InitROM(FileName : in string) return ROM_T is
     FILE romFile : text is in FileName;
     variable romLine : line;
@@ -44,6 +44,7 @@ end function;
 
 signal rom_mem : ROM_T := InitROM(FILENAME);
 
+-- usage of BLOCK RAM for declared memory (table signal)
 attribute rom_style : string;
 attribute rom_style of rom_mem : signal is "block";
  
@@ -52,6 +53,7 @@ begin
     begin
         if (rising_edge(clk)) then
             if(en = '1') then
+                -- TEXTIO allows to load only bit-vector from file => need to re-cast the mem output back to std_logic_vector
                 data <= to_stdlogicvector(rom_mem(to_integer(unsigned(addr))));
             end if;
         end if;

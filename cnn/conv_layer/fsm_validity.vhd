@@ -78,18 +78,18 @@ signal pixel_counter_threshold : std_logic_vector(PIXEL_COUNTER_THRESHOLD_WIDTH 
 --      LINE-COUNTER PARAMS --
 ------------------------------
 
-constant LINE_COUNTER_THRESHOLD_WIDTH : natural := log2c(NO_VALID_LINES_PER_IMAGE); -- LINE_COUNTER uses only NO_VALID_LINES_PER_IMAGE as a threshold. 
 signal line_counter_clear, line_counter_set, line_counter_alert, line_counter_ce : std_logic;
 signal line_counter_clear_tmp, line_counter_set_tmp, line_counter_ce_tmp : std_logic;
-
-signal line_counter_threshold : std_logic_vector(LINE_COUNTER_THRESHOLD_WIDTH - 1 downto 0);
 
 -- number of valid lines per input image
 constant NO_VALID_LINES_PER_IMAGE : natural := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; 
 -- number of PIXELS per vertical border transition
 constant NO_INVALID_PIXELS_PER_TRANSITION : natural := (KERNEL_SIZE - 1) * INPUT_ROW_LENGTH - 1;
 -- the FSM waits for 1 CLK more in inside_image state in order to identify transition to horizontal_border
+constant LINE_COUNTER_THRESHOLD_WIDTH : natural := log2c(NO_VALID_LINES_PER_IMAGE);
+-- LINE_COUNTER uses only NO_VALID_LINES_PER_IMAGE as a threshold. 
 
+signal line_counter_threshold : std_logic_vector(LINE_COUNTER_THRESHOLD_WIDTH - 1 downto 0);
 begin
 
 	pixel_counter : counter_down_generic

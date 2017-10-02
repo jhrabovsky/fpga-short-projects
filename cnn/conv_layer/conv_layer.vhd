@@ -74,7 +74,6 @@ end component;
 
 component fsm is
     Generic (
-        NO_INPUT_MAPS : natural;
         INPUT_ROW_LENGTH : integer;
         KERNEL_SIZE : integer
     );
@@ -87,6 +86,20 @@ component fsm is
 	);
 end component;
 
+function log2c (N : integer) return integer is
+    variable m, p : integer;
+    begin
+        m := 0;
+        p := 1;
+        
+        while p < N loop
+            m := m + 1;
+            p := p * 2;
+        end loop;
+        
+        return m;
+    end log2c;
+    
 ---------------------------------------
 --				CONSTANTS			 --
 ---------------------------------------
@@ -167,20 +180,26 @@ begin
         );
 
     --------------------------------------------------------
-    -- DELAY OF RESULTS CAUSED BY GOING THROUG ADDER TREE --
+    -- DELAY OF RESULTS CAUSED BY GOING THROUGH ADDER TREE --
     --------------------------------------------------------   
-        
-    result_valid_delay: process (clk, rst, valid_in) is
-    begin
-    	if (rising_edge(clk)) then
-    		if (rst = '1') then
-    			adder_trees_delay <= (others => '0');
-    		else then
-    			adder_trees_delay <= adder_trees_delay(ADDER_TREE_DELAY - 2 downto 1) & valid_from_fsm;
-    		end if;
-    	end if;
-    end process result_valid_delay;
-
-    valid_out <= adder_trees_delay(ADDER_TREE_DELAY - 1);
+    
+    adder_tree_delay_gen : if (ADDER_TREE_DELAY > 1) generate    
+        result_valid_delay: process (clk, rst, valid_in) is
+        begin
+            if (rising_edge(clk)) then
+                if (rst = '1') then
+                    adder_trees_delay <= (others => '0');
+                else
+                    adder_trees_delay <= adder_trees_delay(ADDER_TREE_DELAY - 2 downto 1) & valid_from_fsm;
+                end if;
+            end if;
+        end process result_valid_delay;
+    
+        valid_out <= adder_trees_delay(ADDER_TREE_DELAY - 1);
+    end generate;
+    
+    without_adder_tree : if (ADDER_TREE_DELAY <= 1) generate
+        valid_out <= valid_from_fsm;
+    end generate;
     
 end rtl;

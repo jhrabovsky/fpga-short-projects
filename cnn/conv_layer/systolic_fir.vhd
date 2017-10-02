@@ -73,7 +73,7 @@ component MADD_LAST is
 end component;
 
 ---------------------------------------------------------------------------------
---     Setup all the connecting signals between MADD elements in one vector    --
+--     Setup all connecting signals between MADD elements in one vector        --
 ---------------------------------------------------------------------------------
   
   signal pcin_tmp : std_logic_vector(48*N - 1 downto 0);

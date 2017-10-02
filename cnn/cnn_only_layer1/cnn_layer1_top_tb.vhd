@@ -1,6 +1,6 @@
 
 library STD;
-use STD.TEXTIO.ALL;
+    use STD.TEXTIO.ALL;
 
 library IEEE;
     use IEEE.STD_LOGIC_1164.ALL;
@@ -68,7 +68,7 @@ begin
             wait on clk;
             if (rising_edge(clk)) then
                     if (dout_vld = '1') then
-                            wr_fms_on_line : for I in 0 to 15 loop
+                            wr_fsm_on_line : for I in 0 to 15 loop
                                 write(outputLine, to_integer(signed(dout((I+1) * 19 - 1 downto I * 19))));
                                 write(outputLine, string'(" "));
                             end loop;

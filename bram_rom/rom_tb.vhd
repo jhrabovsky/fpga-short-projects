@@ -1,16 +1,10 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity top is
-    Port ( 
-        CLK100MHZ : in std_logic;
-        BTN_RST : in std_logic;
-        LED : out std_logic_vector(7 downto 0)
-    );
-end top;
+entity rom_tb is
+end rom_tb;
 
-architecture RTL of top is
+architecture RTL of rom_tb is
 
 component rom is
     Generic (
@@ -44,23 +38,25 @@ signal mem_data : std_logic_vector(7 downto 0);
 signal mem_addr : std_logic_vector(3 downto 0);
 signal count_tmp : std_logic_vector(19 downto 0);
 
-signal sec_tick : std_logic; 
+-- declaration of validation objects
+constant T : time := 10ns;
+signal clk, rst : std_logic;
 
 begin
-
-    rom_inst : rom
+    
+   rom_inst : rom
         generic map (
             FILENAME => "data-rom.mif",
             DATA_LENGTH => 8,
             ADDR_LENGTH => 4
         )
         port map (
-            clk => CLK100MHZ,
+            clk => clk,
             en => sec_tick,
             addr => mem_addr,
             data => mem_data
         );
-    
+
     mem_addr <= count_tmp(3 downto 0);
 
     addr_gen_inst : counter
@@ -68,25 +64,27 @@ begin
             THRESHOLD => 15
         )
         port map (
-            CLK_IN => CLK100MHZ,
-            RST => BTN_RST,
-            EN => sec_tick,
+            CLK_IN => clk,
+            RST => rst,
+            EN => '1',
             COUNT => count_tmp,
             TS => open
         );
 
-    sec_tick_gen : counter
-        generic map (
-            THRESHOLD => 100000000
-        )
-        port map (
-            CLK_IN => CLK100MHZ,
-            RST => BTN_RST,
-            EN => '1',
-            COUNT => open,
-            TS => sec_tick
-        );
+   clk_gen : process is
+   begin
+    clk <= '0';
+    wait for T/2;
+    clk <= '1';
+    wait for T/2;
+   end process clk_gen;     
 
-    LED <= mem_data;
-
+    stimuli : process is
+    begin
+        rst <= '1';
+        wait for 2*T;
+        rst <= '0';
+        wait;
+    end process stimuli;
+    
 end RTL;

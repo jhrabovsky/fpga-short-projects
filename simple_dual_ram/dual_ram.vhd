@@ -14,9 +14,9 @@ entity dual_ram is
         clk  : in std_logic;                       			            -- Clock
         addr_in : in std_logic_vector(RAM_DEPTH_BITS - 1 downto 0);     -- Write address bus, width determined from RAM_DEPTH
         addr_out : in std_logic_vector(RAM_DEPTH_BITS - 1 downto 0);    -- Read address bus, width determined from RAM_DEPTH
-        din  : in std_logic_vector(RAM_WIDTH_BITS - 1 downto 0);	            -- RAM input data
+        din  : in std_logic_vector(RAM_WIDTH_BITS - 1 downto 0);	    -- RAM input data
         we   : in std_logic;                       			            -- Write enable
-        dout : out std_logic_vector(RAM_WIDTH_BITS - 1  downto 0)               -- RAM output data
+        dout : out std_logic_vector(RAM_WIDTH_BITS - 1  downto 0)       -- RAM output data
     );
 end dual_ram;
 
@@ -26,6 +26,7 @@ type RAM_T is array (0 to RAM_DEPTH_BITS**2 - 1) of std_logic_vector(RAM_WIDTH_B
 signal ram_mem : RAM_T := (others => (others => '0'));
 signal dout_next : std_logic_vector(RAM_WIDTH_BITS - 1 downto 0); 
 
+-- usage of BRAM for implementation of DUAL-PORT RAM
 attribute ram_style : string;
 attribute ram_style of ram_mem : signal is "block";
 

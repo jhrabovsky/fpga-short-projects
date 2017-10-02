@@ -3,12 +3,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
-entity top is
+entity roms_from_file is
     Generic (
         N : natural := 2;
         ADDR_LEN : natural := 4;
@@ -22,9 +17,9 @@ entity top is
         addrs : in std_logic_vector(N * ADDR_LEN - 1 downto 0);
         datas : out std_logic_vector(N * DATA_LEN - 1 downto 0)
     );
-end top;
+end roms_from_file;
 
-architecture Behavioral of top is
+architecture Behavioral of roms_from_file is
 
 component rom is
     Generic (
@@ -44,13 +39,13 @@ end component;
 type addr_frame is array (0 to N-1) of std_logic_vector(ADDR_LEN - 1 downto 0);
 type data_frame is array (0 to N-1) of std_logic_vector(DATA_LEN - 1 downto 0);
 
-signal addr_a : addr_frame;
-signal data_a : data_frame; 
+signal addr_f : addr_frame;
+signal data_f : data_frame; 
 
 begin
     gen_arrays : for I in 0 to N-1 generate
-        addr_a(I) <= addrs(ADDR_LEN * (I+1) - 1 downto ADDR_LEN * I);
-        datas(DATA_LEN * (I+1) - 1 downto DATA_LEN * I) <= data_a(I);
+        addr_f(I) <= addrs(ADDR_LEN * (I+1) - 1 downto ADDR_LEN * I);
+        datas(DATA_LEN * (I+1) - 1 downto DATA_LEN * I) <= data_f(I);
     end generate;
     
     mem_map : for I in 1 to N generate
@@ -63,8 +58,8 @@ begin
             port map (
                 clk => clk,
                 en => ce,
-                addr => addr_a(I-1),
-                data => data_a(I-1)
+                addr => addr_f(I-1),
+                data => data_f(I-1)
             );
     end generate;
 
