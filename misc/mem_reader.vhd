@@ -21,6 +21,18 @@ end mem_reader;
 
 architecture rtl of mem_reader is
 
+function log2c (N : integer) return integer is
+    variable m, p : integer;
+begin
+    m := 0;
+    p := 1;
+    while p < N loop
+        m := m + 1;
+        p := p * 2;
+    end loop;
+    return m;
+end log2c;
+
 component rom is
     Generic (
         FILENAME : string;
@@ -49,23 +61,13 @@ component counter_down is
     );
 end component;
 
+constant THRESHOLD_WIDTH : natural := log2c(NO_ITEMS - 1);
+
 signal mem_data : std_logic_vector(DATA_LEN - 1 downto 0);
 signal mem_addr : std_logic_vector(ADDR_LEN - 1 downto 0);
 signal count_tmp : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
 signal data_reg : std_logic_vector(DATA_LEN - 1 downto 0);
 signal data_next : std_logic_vector(DATA_LEN - 1 downto 0); 
-
-function log2c (N : integer) return integer is
-    variable m, p : integer;
-begin
-    m := 0;
-    p := 1;
-    while p < N loop
-        m := m + 1;
-        p := p * 2;
-    end loop;
-    return m;
-end log2c; 
 
 begin
 
@@ -85,7 +87,7 @@ begin
     addr_gen_inst : counter_down
         generic map (
             THRESHOLD => NO_ITEMS - 1,
-            THRESHOLD_WIDTH => log2c(NO_ITEMS - 1)
+            THRESHOLD_WIDTH => THRESHOLD_WIDTH
         )
         port map (
             CLK_IN => clk,

@@ -157,6 +157,7 @@ begin
                     clk => clk, 
                     ce => ce
                 );
+        end generate;
 
         other_buffers_gen: if (I < KERNEL_SIZE - 2) generate
             delay_buffer_i : delay_buffer 
