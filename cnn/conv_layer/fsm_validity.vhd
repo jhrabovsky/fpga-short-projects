@@ -42,7 +42,7 @@ constant STARTUP_DELAY : integer := STARTUP_DELAY_PART1 + STARTUP_DELAY_PART2;
 constant NO_INVALID_PIXELS_PER_LINE : integer := KERNEL_SIZE - 1; -- number of invalid pixels per line (vertical border crossing)
 constant NO_VALID_PIXELS_PER_LINE : integer := INPUT_ROW_LENGTH - KERNEL_SIZE + 1; -- number of valid pixels per line (inside image)
 
-component counter_down_generic is
+component counter_down_dynamic is
 	Generic (
 		THRESHOLD_WIDTH : natural
 	);
@@ -92,7 +92,7 @@ constant LINE_COUNTER_THRESHOLD_WIDTH : natural := log2c(NO_VALID_LINES_PER_IMAG
 signal line_counter_threshold : std_logic_vector(LINE_COUNTER_THRESHOLD_WIDTH - 1 downto 0);
 begin
 
-	pixel_counter : counter_down_generic
+	pixel_counter : counter_down_dynamic
 		generic map (
 			THRESHOLD_WIDTH => PIXEL_COUNTER_THRESHOLD_WIDTH
 		)
@@ -105,7 +105,7 @@ begin
 			tc => pixel_counter_alert
 		);
 				
-	line_counter : counter_down_generic
+	line_counter : counter_down_dynamic
 	   generic map (
                 THRESHOLD_WIDTH => LINE_COUNTER_THRESHOLD_WIDTH
             )

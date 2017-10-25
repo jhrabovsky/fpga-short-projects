@@ -22,7 +22,7 @@ architecture rtl of switching_block is
 constant THRESHOLD : natural := INPUT_ROW_LENGTH - 2*KERNEL_SIZE + 1;
 
 begin
-	for I in 0 to KERNEL_SIZE - 1 generate
+	mux_gen: for I in 0 to KERNEL_SIZE - 1 generate
 		add_out((I+1) * RESULT_WIDTH - 1 downto I * RESULT_WIDTH) <= 
 			dp_in((I+1) * RESULT_WIDTH - 1 downto I * RESULT_WIDTH) when THRESHOLD >= 0 else
 			dp_in((KERNEL_SIZE - I) * RESULT_WIDTH - 1 downto (KERNEL_SIZE - I - 1) * RESULT_WIDTH);
