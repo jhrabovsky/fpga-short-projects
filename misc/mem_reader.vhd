@@ -31,7 +31,7 @@ begin
         p := p * 2;
     end loop;
     return m;
-end log2c;
+end log2c; 
 
 component rom is
     Generic (
