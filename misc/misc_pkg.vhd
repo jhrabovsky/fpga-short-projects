@@ -20,35 +20,23 @@ package misc_pkg is
         );
     end component;
 
-    component counter_up is
-        Generic (
-            THRESHOLD : natural
-        );
-        Port ( CLK_IN : in STD_LOGIC;
-               RST: in STD_LOGIC;
-               EN : in STD_LOGIC;
-               COUNT : out STD_LOGIC_VECTOR(19 downto 0);
-               TS : out STD_LOGIC
-        );
-    end component;
-
     component counter_down is
         Generic (
-            THRESHOLD : natural
+            THRESHOLD : natural;
+            THRESHOLD_WIDTH : natural
         );
         Port ( CLK_IN : in STD_LOGIC;
                RST: in STD_LOGIC;
                EN : in STD_LOGIC;
-               COUNT : out STD_LOGIC_VECTOR(19 downto 0);
+               COUNT : out STD_LOGIC_VECTOR(THRESHOLD_WIDTH - 1 downto 0);
                TS : out STD_LOGIC
         );
     end component;
 
-    component counter_down_generic is
+    component counter_down_dynamic is
         Generic (
             THRESHOLD_WIDTH : natural
-        );
-        
+        );      
         Port ( 
             clk : in std_logic;
             ce : in std_logic;
@@ -107,12 +95,10 @@ package body misc_pkg is
     begin
         m := 0;
         p := 1;
-        
         while p < N loop
             m := m + 1;
             p := p * 2;
         end loop;
-        
         return m;
     end log2c; 
 

@@ -92,7 +92,7 @@ begin
         end if;
     end process reg_update;
      
-    -- SOURCE: ug953-vivado-7series-libraries.pdf [p167]
+    -- SRC: ug953-vivado-7series-libraries.pdf [p167]
        
     FIFO_BRAM_inst : FIFO_SYNC_MACRO
         generic map (

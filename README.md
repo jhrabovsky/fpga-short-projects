@@ -1,5 +1,7 @@
 # FPGA PROJECTS
 
-FPGA examples created as a part of personal learning experience
+## CONTENT
+This repository contains source code files of the FPGA examples created as a part of the personal learning experience.
 
-I am working with FPGA circuits and here are basic projects I made during learning by practice.
+## PURPOSE
+The examples provide a supporting items for practical revising of the basic concepts on my learning path.

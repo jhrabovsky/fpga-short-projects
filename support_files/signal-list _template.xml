@@ -1,0 +1,1217 @@
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[303]" type="logic">
+         <obj_property name="ElementShortName">[303]</obj_property>
+         <obj_property name="ObjectShortName">[303]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[302]" type="logic">
+         <obj_property name="ElementShortName">[302]</obj_property>
+         <obj_property name="ObjectShortName">[302]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[301]" type="logic">
+         <obj_property name="ElementShortName">[301]</obj_property>
+         <obj_property name="ObjectShortName">[301]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[300]" type="logic">
+         <obj_property name="ElementShortName">[300]</obj_property>
+         <obj_property name="ObjectShortName">[300]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[299]" type="logic">
+         <obj_property name="ElementShortName">[299]</obj_property>
+         <obj_property name="ObjectShortName">[299]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[298]" type="logic">
+         <obj_property name="ElementShortName">[298]</obj_property>
+         <obj_property name="ObjectShortName">[298]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[297]" type="logic">
+         <obj_property name="ElementShortName">[297]</obj_property>
+         <obj_property name="ObjectShortName">[297]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[296]" type="logic">
+         <obj_property name="ElementShortName">[296]</obj_property>
+         <obj_property name="ObjectShortName">[296]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[295]" type="logic">
+         <obj_property name="ElementShortName">[295]</obj_property>
+         <obj_property name="ObjectShortName">[295]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[294]" type="logic">
+         <obj_property name="ElementShortName">[294]</obj_property>
+         <obj_property name="ObjectShortName">[294]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[293]" type="logic">
+         <obj_property name="ElementShortName">[293]</obj_property>
+         <obj_property name="ObjectShortName">[293]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[292]" type="logic">
+         <obj_property name="ElementShortName">[292]</obj_property>
+         <obj_property name="ObjectShortName">[292]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[291]" type="logic">
+         <obj_property name="ElementShortName">[291]</obj_property>
+         <obj_property name="ObjectShortName">[291]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[290]" type="logic">
+         <obj_property name="ElementShortName">[290]</obj_property>
+         <obj_property name="ObjectShortName">[290]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[289]" type="logic">
+         <obj_property name="ElementShortName">[289]</obj_property>
+         <obj_property name="ObjectShortName">[289]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[288]" type="logic">
+         <obj_property name="ElementShortName">[288]</obj_property>
+         <obj_property name="ObjectShortName">[288]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[287]" type="logic">
+         <obj_property name="ElementShortName">[287]</obj_property>
+         <obj_property name="ObjectShortName">[287]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[286]" type="logic">
+         <obj_property name="ElementShortName">[286]</obj_property>
+         <obj_property name="ObjectShortName">[286]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[285]" type="logic">
+         <obj_property name="ElementShortName">[285]</obj_property>
+         <obj_property name="ObjectShortName">[285]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[284]" type="logic">
+         <obj_property name="ElementShortName">[284]</obj_property>
+         <obj_property name="ObjectShortName">[284]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[283]" type="logic">
+         <obj_property name="ElementShortName">[283]</obj_property>
+         <obj_property name="ObjectShortName">[283]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[282]" type="logic">
+         <obj_property name="ElementShortName">[282]</obj_property>
+         <obj_property name="ObjectShortName">[282]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[281]" type="logic">
+         <obj_property name="ElementShortName">[281]</obj_property>
+         <obj_property name="ObjectShortName">[281]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[280]" type="logic">
+         <obj_property name="ElementShortName">[280]</obj_property>
+         <obj_property name="ObjectShortName">[280]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[279]" type="logic">
+         <obj_property name="ElementShortName">[279]</obj_property>
+         <obj_property name="ObjectShortName">[279]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[278]" type="logic">
+         <obj_property name="ElementShortName">[278]</obj_property>
+         <obj_property name="ObjectShortName">[278]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[277]" type="logic">
+         <obj_property name="ElementShortName">[277]</obj_property>
+         <obj_property name="ObjectShortName">[277]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[276]" type="logic">
+         <obj_property name="ElementShortName">[276]</obj_property>
+         <obj_property name="ObjectShortName">[276]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[275]" type="logic">
+         <obj_property name="ElementShortName">[275]</obj_property>
+         <obj_property name="ObjectShortName">[275]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[274]" type="logic">
+         <obj_property name="ElementShortName">[274]</obj_property>
+         <obj_property name="ObjectShortName">[274]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[273]" type="logic">
+         <obj_property name="ElementShortName">[273]</obj_property>
+         <obj_property name="ObjectShortName">[273]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[272]" type="logic">
+         <obj_property name="ElementShortName">[272]</obj_property>
+         <obj_property name="ObjectShortName">[272]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[271]" type="logic">
+         <obj_property name="ElementShortName">[271]</obj_property>
+         <obj_property name="ObjectShortName">[271]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[270]" type="logic">
+         <obj_property name="ElementShortName">[270]</obj_property>
+         <obj_property name="ObjectShortName">[270]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[269]" type="logic">
+         <obj_property name="ElementShortName">[269]</obj_property>
+         <obj_property name="ObjectShortName">[269]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[268]" type="logic">
+         <obj_property name="ElementShortName">[268]</obj_property>
+         <obj_property name="ObjectShortName">[268]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[267]" type="logic">
+         <obj_property name="ElementShortName">[267]</obj_property>
+         <obj_property name="ObjectShortName">[267]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[266]" type="logic">
+         <obj_property name="ElementShortName">[266]</obj_property>
+         <obj_property name="ObjectShortName">[266]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[265]" type="logic">
+         <obj_property name="ElementShortName">[265]</obj_property>
+         <obj_property name="ObjectShortName">[265]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[264]" type="logic">
+         <obj_property name="ElementShortName">[264]</obj_property>
+         <obj_property name="ObjectShortName">[264]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[263]" type="logic">
+         <obj_property name="ElementShortName">[263]</obj_property>
+         <obj_property name="ObjectShortName">[263]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[262]" type="logic">
+         <obj_property name="ElementShortName">[262]</obj_property>
+         <obj_property name="ObjectShortName">[262]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[261]" type="logic">
+         <obj_property name="ElementShortName">[261]</obj_property>
+         <obj_property name="ObjectShortName">[261]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[260]" type="logic">
+         <obj_property name="ElementShortName">[260]</obj_property>
+         <obj_property name="ObjectShortName">[260]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[259]" type="logic">
+         <obj_property name="ElementShortName">[259]</obj_property>
+         <obj_property name="ObjectShortName">[259]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[258]" type="logic">
+         <obj_property name="ElementShortName">[258]</obj_property>
+         <obj_property name="ObjectShortName">[258]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[257]" type="logic">
+         <obj_property name="ElementShortName">[257]</obj_property>
+         <obj_property name="ObjectShortName">[257]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[256]" type="logic">
+         <obj_property name="ElementShortName">[256]</obj_property>
+         <obj_property name="ObjectShortName">[256]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[255]" type="logic">
+         <obj_property name="ElementShortName">[255]</obj_property>
+         <obj_property name="ObjectShortName">[255]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[254]" type="logic">
+         <obj_property name="ElementShortName">[254]</obj_property>
+         <obj_property name="ObjectShortName">[254]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[253]" type="logic">
+         <obj_property name="ElementShortName">[253]</obj_property>
+         <obj_property name="ObjectShortName">[253]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[252]" type="logic">
+         <obj_property name="ElementShortName">[252]</obj_property>
+         <obj_property name="ObjectShortName">[252]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[251]" type="logic">
+         <obj_property name="ElementShortName">[251]</obj_property>
+         <obj_property name="ObjectShortName">[251]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[250]" type="logic">
+         <obj_property name="ElementShortName">[250]</obj_property>
+         <obj_property name="ObjectShortName">[250]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[249]" type="logic">
+         <obj_property name="ElementShortName">[249]</obj_property>
+         <obj_property name="ObjectShortName">[249]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[248]" type="logic">
+         <obj_property name="ElementShortName">[248]</obj_property>
+         <obj_property name="ObjectShortName">[248]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[247]" type="logic">
+         <obj_property name="ElementShortName">[247]</obj_property>
+         <obj_property name="ObjectShortName">[247]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[246]" type="logic">
+         <obj_property name="ElementShortName">[246]</obj_property>
+         <obj_property name="ObjectShortName">[246]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[245]" type="logic">
+         <obj_property name="ElementShortName">[245]</obj_property>
+         <obj_property name="ObjectShortName">[245]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[244]" type="logic">
+         <obj_property name="ElementShortName">[244]</obj_property>
+         <obj_property name="ObjectShortName">[244]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[243]" type="logic">
+         <obj_property name="ElementShortName">[243]</obj_property>
+         <obj_property name="ObjectShortName">[243]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[242]" type="logic">
+         <obj_property name="ElementShortName">[242]</obj_property>
+         <obj_property name="ObjectShortName">[242]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[241]" type="logic">
+         <obj_property name="ElementShortName">[241]</obj_property>
+         <obj_property name="ObjectShortName">[241]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[240]" type="logic">
+         <obj_property name="ElementShortName">[240]</obj_property>
+         <obj_property name="ObjectShortName">[240]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[239]" type="logic">
+         <obj_property name="ElementShortName">[239]</obj_property>
+         <obj_property name="ObjectShortName">[239]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[238]" type="logic">
+         <obj_property name="ElementShortName">[238]</obj_property>
+         <obj_property name="ObjectShortName">[238]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[237]" type="logic">
+         <obj_property name="ElementShortName">[237]</obj_property>
+         <obj_property name="ObjectShortName">[237]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[236]" type="logic">
+         <obj_property name="ElementShortName">[236]</obj_property>
+         <obj_property name="ObjectShortName">[236]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[235]" type="logic">
+         <obj_property name="ElementShortName">[235]</obj_property>
+         <obj_property name="ObjectShortName">[235]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[234]" type="logic">
+         <obj_property name="ElementShortName">[234]</obj_property>
+         <obj_property name="ObjectShortName">[234]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[233]" type="logic">
+         <obj_property name="ElementShortName">[233]</obj_property>
+         <obj_property name="ObjectShortName">[233]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[232]" type="logic">
+         <obj_property name="ElementShortName">[232]</obj_property>
+         <obj_property name="ObjectShortName">[232]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[231]" type="logic">
+         <obj_property name="ElementShortName">[231]</obj_property>
+         <obj_property name="ObjectShortName">[231]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[230]" type="logic">
+         <obj_property name="ElementShortName">[230]</obj_property>
+         <obj_property name="ObjectShortName">[230]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[229]" type="logic">
+         <obj_property name="ElementShortName">[229]</obj_property>
+         <obj_property name="ObjectShortName">[229]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[228]" type="logic">
+         <obj_property name="ElementShortName">[228]</obj_property>
+         <obj_property name="ObjectShortName">[228]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[227]" type="logic">
+         <obj_property name="ElementShortName">[227]</obj_property>
+         <obj_property name="ObjectShortName">[227]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[226]" type="logic">
+         <obj_property name="ElementShortName">[226]</obj_property>
+         <obj_property name="ObjectShortName">[226]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[225]" type="logic">
+         <obj_property name="ElementShortName">[225]</obj_property>
+         <obj_property name="ObjectShortName">[225]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[224]" type="logic">
+         <obj_property name="ElementShortName">[224]</obj_property>
+         <obj_property name="ObjectShortName">[224]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[223]" type="logic">
+         <obj_property name="ElementShortName">[223]</obj_property>
+         <obj_property name="ObjectShortName">[223]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[222]" type="logic">
+         <obj_property name="ElementShortName">[222]</obj_property>
+         <obj_property name="ObjectShortName">[222]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[221]" type="logic">
+         <obj_property name="ElementShortName">[221]</obj_property>
+         <obj_property name="ObjectShortName">[221]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[220]" type="logic">
+         <obj_property name="ElementShortName">[220]</obj_property>
+         <obj_property name="ObjectShortName">[220]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[219]" type="logic">
+         <obj_property name="ElementShortName">[219]</obj_property>
+         <obj_property name="ObjectShortName">[219]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[218]" type="logic">
+         <obj_property name="ElementShortName">[218]</obj_property>
+         <obj_property name="ObjectShortName">[218]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[217]" type="logic">
+         <obj_property name="ElementShortName">[217]</obj_property>
+         <obj_property name="ObjectShortName">[217]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[216]" type="logic">
+         <obj_property name="ElementShortName">[216]</obj_property>
+         <obj_property name="ObjectShortName">[216]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[215]" type="logic">
+         <obj_property name="ElementShortName">[215]</obj_property>
+         <obj_property name="ObjectShortName">[215]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[214]" type="logic">
+         <obj_property name="ElementShortName">[214]</obj_property>
+         <obj_property name="ObjectShortName">[214]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[213]" type="logic">
+         <obj_property name="ElementShortName">[213]</obj_property>
+         <obj_property name="ObjectShortName">[213]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[212]" type="logic">
+         <obj_property name="ElementShortName">[212]</obj_property>
+         <obj_property name="ObjectShortName">[212]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[211]" type="logic">
+         <obj_property name="ElementShortName">[211]</obj_property>
+         <obj_property name="ObjectShortName">[211]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[210]" type="logic">
+         <obj_property name="ElementShortName">[210]</obj_property>
+         <obj_property name="ObjectShortName">[210]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[209]" type="logic">
+         <obj_property name="ElementShortName">[209]</obj_property>
+         <obj_property name="ObjectShortName">[209]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[208]" type="logic">
+         <obj_property name="ElementShortName">[208]</obj_property>
+         <obj_property name="ObjectShortName">[208]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[207]" type="logic">
+         <obj_property name="ElementShortName">[207]</obj_property>
+         <obj_property name="ObjectShortName">[207]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[206]" type="logic">
+         <obj_property name="ElementShortName">[206]</obj_property>
+         <obj_property name="ObjectShortName">[206]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[205]" type="logic">
+         <obj_property name="ElementShortName">[205]</obj_property>
+         <obj_property name="ObjectShortName">[205]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[204]" type="logic">
+         <obj_property name="ElementShortName">[204]</obj_property>
+         <obj_property name="ObjectShortName">[204]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[203]" type="logic">
+         <obj_property name="ElementShortName">[203]</obj_property>
+         <obj_property name="ObjectShortName">[203]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[202]" type="logic">
+         <obj_property name="ElementShortName">[202]</obj_property>
+         <obj_property name="ObjectShortName">[202]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[201]" type="logic">
+         <obj_property name="ElementShortName">[201]</obj_property>
+         <obj_property name="ObjectShortName">[201]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[200]" type="logic">
+         <obj_property name="ElementShortName">[200]</obj_property>
+         <obj_property name="ObjectShortName">[200]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[199]" type="logic">
+         <obj_property name="ElementShortName">[199]</obj_property>
+         <obj_property name="ObjectShortName">[199]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[198]" type="logic">
+         <obj_property name="ElementShortName">[198]</obj_property>
+         <obj_property name="ObjectShortName">[198]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[197]" type="logic">
+         <obj_property name="ElementShortName">[197]</obj_property>
+         <obj_property name="ObjectShortName">[197]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[196]" type="logic">
+         <obj_property name="ElementShortName">[196]</obj_property>
+         <obj_property name="ObjectShortName">[196]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[195]" type="logic">
+         <obj_property name="ElementShortName">[195]</obj_property>
+         <obj_property name="ObjectShortName">[195]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[194]" type="logic">
+         <obj_property name="ElementShortName">[194]</obj_property>
+         <obj_property name="ObjectShortName">[194]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[193]" type="logic">
+         <obj_property name="ElementShortName">[193]</obj_property>
+         <obj_property name="ObjectShortName">[193]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[192]" type="logic">
+         <obj_property name="ElementShortName">[192]</obj_property>
+         <obj_property name="ObjectShortName">[192]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[191]" type="logic">
+         <obj_property name="ElementShortName">[191]</obj_property>
+         <obj_property name="ObjectShortName">[191]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[190]" type="logic">
+         <obj_property name="ElementShortName">[190]</obj_property>
+         <obj_property name="ObjectShortName">[190]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[189]" type="logic">
+         <obj_property name="ElementShortName">[189]</obj_property>
+         <obj_property name="ObjectShortName">[189]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[188]" type="logic">
+         <obj_property name="ElementShortName">[188]</obj_property>
+         <obj_property name="ObjectShortName">[188]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[187]" type="logic">
+         <obj_property name="ElementShortName">[187]</obj_property>
+         <obj_property name="ObjectShortName">[187]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[186]" type="logic">
+         <obj_property name="ElementShortName">[186]</obj_property>
+         <obj_property name="ObjectShortName">[186]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[185]" type="logic">
+         <obj_property name="ElementShortName">[185]</obj_property>
+         <obj_property name="ObjectShortName">[185]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[184]" type="logic">
+         <obj_property name="ElementShortName">[184]</obj_property>
+         <obj_property name="ObjectShortName">[184]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[183]" type="logic">
+         <obj_property name="ElementShortName">[183]</obj_property>
+         <obj_property name="ObjectShortName">[183]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[182]" type="logic">
+         <obj_property name="ElementShortName">[182]</obj_property>
+         <obj_property name="ObjectShortName">[182]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[181]" type="logic">
+         <obj_property name="ElementShortName">[181]</obj_property>
+         <obj_property name="ObjectShortName">[181]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[180]" type="logic">
+         <obj_property name="ElementShortName">[180]</obj_property>
+         <obj_property name="ObjectShortName">[180]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[179]" type="logic">
+         <obj_property name="ElementShortName">[179]</obj_property>
+         <obj_property name="ObjectShortName">[179]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[178]" type="logic">
+         <obj_property name="ElementShortName">[178]</obj_property>
+         <obj_property name="ObjectShortName">[178]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[177]" type="logic">
+         <obj_property name="ElementShortName">[177]</obj_property>
+         <obj_property name="ObjectShortName">[177]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[176]" type="logic">
+         <obj_property name="ElementShortName">[176]</obj_property>
+         <obj_property name="ObjectShortName">[176]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[175]" type="logic">
+         <obj_property name="ElementShortName">[175]</obj_property>
+         <obj_property name="ObjectShortName">[175]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[174]" type="logic">
+         <obj_property name="ElementShortName">[174]</obj_property>
+         <obj_property name="ObjectShortName">[174]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[173]" type="logic">
+         <obj_property name="ElementShortName">[173]</obj_property>
+         <obj_property name="ObjectShortName">[173]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[172]" type="logic">
+         <obj_property name="ElementShortName">[172]</obj_property>
+         <obj_property name="ObjectShortName">[172]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[171]" type="logic">
+         <obj_property name="ElementShortName">[171]</obj_property>
+         <obj_property name="ObjectShortName">[171]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[170]" type="logic">
+         <obj_property name="ElementShortName">[170]</obj_property>
+         <obj_property name="ObjectShortName">[170]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[169]" type="logic">
+         <obj_property name="ElementShortName">[169]</obj_property>
+         <obj_property name="ObjectShortName">[169]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[168]" type="logic">
+         <obj_property name="ElementShortName">[168]</obj_property>
+         <obj_property name="ObjectShortName">[168]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[167]" type="logic">
+         <obj_property name="ElementShortName">[167]</obj_property>
+         <obj_property name="ObjectShortName">[167]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[166]" type="logic">
+         <obj_property name="ElementShortName">[166]</obj_property>
+         <obj_property name="ObjectShortName">[166]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[165]" type="logic">
+         <obj_property name="ElementShortName">[165]</obj_property>
+         <obj_property name="ObjectShortName">[165]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[164]" type="logic">
+         <obj_property name="ElementShortName">[164]</obj_property>
+         <obj_property name="ObjectShortName">[164]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[163]" type="logic">
+         <obj_property name="ElementShortName">[163]</obj_property>
+         <obj_property name="ObjectShortName">[163]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[162]" type="logic">
+         <obj_property name="ElementShortName">[162]</obj_property>
+         <obj_property name="ObjectShortName">[162]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[161]" type="logic">
+         <obj_property name="ElementShortName">[161]</obj_property>
+         <obj_property name="ObjectShortName">[161]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[160]" type="logic">
+         <obj_property name="ElementShortName">[160]</obj_property>
+         <obj_property name="ObjectShortName">[160]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[159]" type="logic">
+         <obj_property name="ElementShortName">[159]</obj_property>
+         <obj_property name="ObjectShortName">[159]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[158]" type="logic">
+         <obj_property name="ElementShortName">[158]</obj_property>
+         <obj_property name="ObjectShortName">[158]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[157]" type="logic">
+         <obj_property name="ElementShortName">[157]</obj_property>
+         <obj_property name="ObjectShortName">[157]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[156]" type="logic">
+         <obj_property name="ElementShortName">[156]</obj_property>
+         <obj_property name="ObjectShortName">[156]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[155]" type="logic">
+         <obj_property name="ElementShortName">[155]</obj_property>
+         <obj_property name="ObjectShortName">[155]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[154]" type="logic">
+         <obj_property name="ElementShortName">[154]</obj_property>
+         <obj_property name="ObjectShortName">[154]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[153]" type="logic">
+         <obj_property name="ElementShortName">[153]</obj_property>
+         <obj_property name="ObjectShortName">[153]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[152]" type="logic">
+         <obj_property name="ElementShortName">[152]</obj_property>
+         <obj_property name="ObjectShortName">[152]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[151]" type="logic">
+         <obj_property name="ElementShortName">[151]</obj_property>
+         <obj_property name="ObjectShortName">[151]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[150]" type="logic">
+         <obj_property name="ElementShortName">[150]</obj_property>
+         <obj_property name="ObjectShortName">[150]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[149]" type="logic">
+         <obj_property name="ElementShortName">[149]</obj_property>
+         <obj_property name="ObjectShortName">[149]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[148]" type="logic">
+         <obj_property name="ElementShortName">[148]</obj_property>
+         <obj_property name="ObjectShortName">[148]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[147]" type="logic">
+         <obj_property name="ElementShortName">[147]</obj_property>
+         <obj_property name="ObjectShortName">[147]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[146]" type="logic">
+         <obj_property name="ElementShortName">[146]</obj_property>
+         <obj_property name="ObjectShortName">[146]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[145]" type="logic">
+         <obj_property name="ElementShortName">[145]</obj_property>
+         <obj_property name="ObjectShortName">[145]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[144]" type="logic">
+         <obj_property name="ElementShortName">[144]</obj_property>
+         <obj_property name="ObjectShortName">[144]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[143]" type="logic">
+         <obj_property name="ElementShortName">[143]</obj_property>
+         <obj_property name="ObjectShortName">[143]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[142]" type="logic">
+         <obj_property name="ElementShortName">[142]</obj_property>
+         <obj_property name="ObjectShortName">[142]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[141]" type="logic">
+         <obj_property name="ElementShortName">[141]</obj_property>
+         <obj_property name="ObjectShortName">[141]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[140]" type="logic">
+         <obj_property name="ElementShortName">[140]</obj_property>
+         <obj_property name="ObjectShortName">[140]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[139]" type="logic">
+         <obj_property name="ElementShortName">[139]</obj_property>
+         <obj_property name="ObjectShortName">[139]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[138]" type="logic">
+         <obj_property name="ElementShortName">[138]</obj_property>
+         <obj_property name="ObjectShortName">[138]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[137]" type="logic">
+         <obj_property name="ElementShortName">[137]</obj_property>
+         <obj_property name="ObjectShortName">[137]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[136]" type="logic">
+         <obj_property name="ElementShortName">[136]</obj_property>
+         <obj_property name="ObjectShortName">[136]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[135]" type="logic">
+         <obj_property name="ElementShortName">[135]</obj_property>
+         <obj_property name="ObjectShortName">[135]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[134]" type="logic">
+         <obj_property name="ElementShortName">[134]</obj_property>
+         <obj_property name="ObjectShortName">[134]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[133]" type="logic">
+         <obj_property name="ElementShortName">[133]</obj_property>
+         <obj_property name="ObjectShortName">[133]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[132]" type="logic">
+         <obj_property name="ElementShortName">[132]</obj_property>
+         <obj_property name="ObjectShortName">[132]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[131]" type="logic">
+         <obj_property name="ElementShortName">[131]</obj_property>
+         <obj_property name="ObjectShortName">[131]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[130]" type="logic">
+         <obj_property name="ElementShortName">[130]</obj_property>
+         <obj_property name="ObjectShortName">[130]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[129]" type="logic">
+         <obj_property name="ElementShortName">[129]</obj_property>
+         <obj_property name="ObjectShortName">[129]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[128]" type="logic">
+         <obj_property name="ElementShortName">[128]</obj_property>
+         <obj_property name="ObjectShortName">[128]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[127]" type="logic">
+         <obj_property name="ElementShortName">[127]</obj_property>
+         <obj_property name="ObjectShortName">[127]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[126]" type="logic">
+         <obj_property name="ElementShortName">[126]</obj_property>
+         <obj_property name="ObjectShortName">[126]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[125]" type="logic">
+         <obj_property name="ElementShortName">[125]</obj_property>
+         <obj_property name="ObjectShortName">[125]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[124]" type="logic">
+         <obj_property name="ElementShortName">[124]</obj_property>
+         <obj_property name="ObjectShortName">[124]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[123]" type="logic">
+         <obj_property name="ElementShortName">[123]</obj_property>
+         <obj_property name="ObjectShortName">[123]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[122]" type="logic">
+         <obj_property name="ElementShortName">[122]</obj_property>
+         <obj_property name="ObjectShortName">[122]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[121]" type="logic">
+         <obj_property name="ElementShortName">[121]</obj_property>
+         <obj_property name="ObjectShortName">[121]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[120]" type="logic">
+         <obj_property name="ElementShortName">[120]</obj_property>
+         <obj_property name="ObjectShortName">[120]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[119]" type="logic">
+         <obj_property name="ElementShortName">[119]</obj_property>
+         <obj_property name="ObjectShortName">[119]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[118]" type="logic">
+         <obj_property name="ElementShortName">[118]</obj_property>
+         <obj_property name="ObjectShortName">[118]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[117]" type="logic">
+         <obj_property name="ElementShortName">[117]</obj_property>
+         <obj_property name="ObjectShortName">[117]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[116]" type="logic">
+         <obj_property name="ElementShortName">[116]</obj_property>
+         <obj_property name="ObjectShortName">[116]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[115]" type="logic">
+         <obj_property name="ElementShortName">[115]</obj_property>
+         <obj_property name="ObjectShortName">[115]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[114]" type="logic">
+         <obj_property name="ElementShortName">[114]</obj_property>
+         <obj_property name="ObjectShortName">[114]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[113]" type="logic">
+         <obj_property name="ElementShortName">[113]</obj_property>
+         <obj_property name="ObjectShortName">[113]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[112]" type="logic">
+         <obj_property name="ElementShortName">[112]</obj_property>
+         <obj_property name="ObjectShortName">[112]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[111]" type="logic">
+         <obj_property name="ElementShortName">[111]</obj_property>
+         <obj_property name="ObjectShortName">[111]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[110]" type="logic">
+         <obj_property name="ElementShortName">[110]</obj_property>
+         <obj_property name="ObjectShortName">[110]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[109]" type="logic">
+         <obj_property name="ElementShortName">[109]</obj_property>
+         <obj_property name="ObjectShortName">[109]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[108]" type="logic">
+         <obj_property name="ElementShortName">[108]</obj_property>
+         <obj_property name="ObjectShortName">[108]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[107]" type="logic">
+         <obj_property name="ElementShortName">[107]</obj_property>
+         <obj_property name="ObjectShortName">[107]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[106]" type="logic">
+         <obj_property name="ElementShortName">[106]</obj_property>
+         <obj_property name="ObjectShortName">[106]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[105]" type="logic">
+         <obj_property name="ElementShortName">[105]</obj_property>
+         <obj_property name="ObjectShortName">[105]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[104]" type="logic">
+         <obj_property name="ElementShortName">[104]</obj_property>
+         <obj_property name="ObjectShortName">[104]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[103]" type="logic">
+         <obj_property name="ElementShortName">[103]</obj_property>
+         <obj_property name="ObjectShortName">[103]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[102]" type="logic">
+         <obj_property name="ElementShortName">[102]</obj_property>
+         <obj_property name="ObjectShortName">[102]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[101]" type="logic">
+         <obj_property name="ElementShortName">[101]</obj_property>
+         <obj_property name="ObjectShortName">[101]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[100]" type="logic">
+         <obj_property name="ElementShortName">[100]</obj_property>
+         <obj_property name="ObjectShortName">[100]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[99]" type="logic">
+         <obj_property name="ElementShortName">[99]</obj_property>
+         <obj_property name="ObjectShortName">[99]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[98]" type="logic">
+         <obj_property name="ElementShortName">[98]</obj_property>
+         <obj_property name="ObjectShortName">[98]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[97]" type="logic">
+         <obj_property name="ElementShortName">[97]</obj_property>
+         <obj_property name="ObjectShortName">[97]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[96]" type="logic">
+         <obj_property name="ElementShortName">[96]</obj_property>
+         <obj_property name="ObjectShortName">[96]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[95]" type="logic">
+         <obj_property name="ElementShortName">[95]</obj_property>
+         <obj_property name="ObjectShortName">[95]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[94]" type="logic">
+         <obj_property name="ElementShortName">[94]</obj_property>
+         <obj_property name="ObjectShortName">[94]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[93]" type="logic">
+         <obj_property name="ElementShortName">[93]</obj_property>
+         <obj_property name="ObjectShortName">[93]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[92]" type="logic">
+         <obj_property name="ElementShortName">[92]</obj_property>
+         <obj_property name="ObjectShortName">[92]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[91]" type="logic">
+         <obj_property name="ElementShortName">[91]</obj_property>
+         <obj_property name="ObjectShortName">[91]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[90]" type="logic">
+         <obj_property name="ElementShortName">[90]</obj_property>
+         <obj_property name="ObjectShortName">[90]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[89]" type="logic">
+         <obj_property name="ElementShortName">[89]</obj_property>
+         <obj_property name="ObjectShortName">[89]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[88]" type="logic">
+         <obj_property name="ElementShortName">[88]</obj_property>
+         <obj_property name="ObjectShortName">[88]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[87]" type="logic">
+         <obj_property name="ElementShortName">[87]</obj_property>
+         <obj_property name="ObjectShortName">[87]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[86]" type="logic">
+         <obj_property name="ElementShortName">[86]</obj_property>
+         <obj_property name="ObjectShortName">[86]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[85]" type="logic">
+         <obj_property name="ElementShortName">[85]</obj_property>
+         <obj_property name="ObjectShortName">[85]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[84]" type="logic">
+         <obj_property name="ElementShortName">[84]</obj_property>
+         <obj_property name="ObjectShortName">[84]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[83]" type="logic">
+         <obj_property name="ElementShortName">[83]</obj_property>
+         <obj_property name="ObjectShortName">[83]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[82]" type="logic">
+         <obj_property name="ElementShortName">[82]</obj_property>
+         <obj_property name="ObjectShortName">[82]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[81]" type="logic">
+         <obj_property name="ElementShortName">[81]</obj_property>
+         <obj_property name="ObjectShortName">[81]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[80]" type="logic">
+         <obj_property name="ElementShortName">[80]</obj_property>
+         <obj_property name="ObjectShortName">[80]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[79]" type="logic">
+         <obj_property name="ElementShortName">[79]</obj_property>
+         <obj_property name="ObjectShortName">[79]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[78]" type="logic">
+         <obj_property name="ElementShortName">[78]</obj_property>
+         <obj_property name="ObjectShortName">[78]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[77]" type="logic">
+         <obj_property name="ElementShortName">[77]</obj_property>
+         <obj_property name="ObjectShortName">[77]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[76]" type="logic">
+         <obj_property name="ElementShortName">[76]</obj_property>
+         <obj_property name="ObjectShortName">[76]</obj_property>
+      </wvobject>
+	  
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[75]" type="logic">
+         <obj_property name="ElementShortName">[75]</obj_property>
+         <obj_property name="ObjectShortName">[75]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[74]" type="logic">
+         <obj_property name="ElementShortName">[74]</obj_property>
+         <obj_property name="ObjectShortName">[74]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[73]" type="logic">
+         <obj_property name="ElementShortName">[73]</obj_property>
+         <obj_property name="ObjectShortName">[73]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[72]" type="logic">
+         <obj_property name="ElementShortName">[72]</obj_property>
+         <obj_property name="ObjectShortName">[72]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[71]" type="logic">
+         <obj_property name="ElementShortName">[71]</obj_property>
+         <obj_property name="ObjectShortName">[71]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[70]" type="logic">
+         <obj_property name="ElementShortName">[70]</obj_property>
+         <obj_property name="ObjectShortName">[70]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[69]" type="logic">
+         <obj_property name="ElementShortName">[69]</obj_property>
+         <obj_property name="ObjectShortName">[69]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[68]" type="logic">
+         <obj_property name="ElementShortName">[68]</obj_property>
+         <obj_property name="ObjectShortName">[68]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[67]" type="logic">
+         <obj_property name="ElementShortName">[67]</obj_property>
+         <obj_property name="ObjectShortName">[67]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[66]" type="logic">
+         <obj_property name="ElementShortName">[66]</obj_property>
+         <obj_property name="ObjectShortName">[66]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[65]" type="logic">
+         <obj_property name="ElementShortName">[65]</obj_property>
+         <obj_property name="ObjectShortName">[65]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[64]" type="logic">
+         <obj_property name="ElementShortName">[64]</obj_property>
+         <obj_property name="ObjectShortName">[64]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[63]" type="logic">
+         <obj_property name="ElementShortName">[63]</obj_property>
+         <obj_property name="ObjectShortName">[63]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[62]" type="logic">
+         <obj_property name="ElementShortName">[62]</obj_property>
+         <obj_property name="ObjectShortName">[62]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[61]" type="logic">
+         <obj_property name="ElementShortName">[61]</obj_property>
+         <obj_property name="ObjectShortName">[61]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[60]" type="logic">
+         <obj_property name="ElementShortName">[60]</obj_property>
+         <obj_property name="ObjectShortName">[60]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[59]" type="logic">
+         <obj_property name="ElementShortName">[59]</obj_property>
+         <obj_property name="ObjectShortName">[59]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[58]" type="logic">
+         <obj_property name="ElementShortName">[58]</obj_property>
+         <obj_property name="ObjectShortName">[58]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[57]" type="logic">
+         <obj_property name="ElementShortName">[57]</obj_property>
+         <obj_property name="ObjectShortName">[57]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[56]" type="logic">
+         <obj_property name="ElementShortName">[56]</obj_property>
+         <obj_property name="ObjectShortName">[56]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[55]" type="logic">
+         <obj_property name="ElementShortName">[55]</obj_property>
+         <obj_property name="ObjectShortName">[55]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[54]" type="logic">
+         <obj_property name="ElementShortName">[54]</obj_property>
+         <obj_property name="ObjectShortName">[54]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[53]" type="logic">
+         <obj_property name="ElementShortName">[53]</obj_property>
+         <obj_property name="ObjectShortName">[53]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[52]" type="logic">
+         <obj_property name="ElementShortName">[52]</obj_property>
+         <obj_property name="ObjectShortName">[52]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[51]" type="logic">
+         <obj_property name="ElementShortName">[51]</obj_property>
+         <obj_property name="ObjectShortName">[51]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[50]" type="logic">
+         <obj_property name="ElementShortName">[50]</obj_property>
+         <obj_property name="ObjectShortName">[50]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[49]" type="logic">
+         <obj_property name="ElementShortName">[49]</obj_property>
+         <obj_property name="ObjectShortName">[49]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[48]" type="logic">
+         <obj_property name="ElementShortName">[48]</obj_property>
+         <obj_property name="ObjectShortName">[48]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[47]" type="logic">
+         <obj_property name="ElementShortName">[47]</obj_property>
+         <obj_property name="ObjectShortName">[47]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[46]" type="logic">
+         <obj_property name="ElementShortName">[46]</obj_property>
+         <obj_property name="ObjectShortName">[46]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[45]" type="logic">
+         <obj_property name="ElementShortName">[45]</obj_property>
+         <obj_property name="ObjectShortName">[45]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[44]" type="logic">
+         <obj_property name="ElementShortName">[44]</obj_property>
+         <obj_property name="ObjectShortName">[44]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[43]" type="logic">
+         <obj_property name="ElementShortName">[43]</obj_property>
+         <obj_property name="ObjectShortName">[43]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[42]" type="logic">
+         <obj_property name="ElementShortName">[42]</obj_property>
+         <obj_property name="ObjectShortName">[42]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[41]" type="logic">
+         <obj_property name="ElementShortName">[41]</obj_property>
+         <obj_property name="ObjectShortName">[41]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[40]" type="logic">
+         <obj_property name="ElementShortName">[40]</obj_property>
+         <obj_property name="ObjectShortName">[40]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[39]" type="logic">
+         <obj_property name="ElementShortName">[39]</obj_property>
+         <obj_property name="ObjectShortName">[39]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[38]" type="logic">
+         <obj_property name="ElementShortName">[38]</obj_property>
+         <obj_property name="ObjectShortName">[38]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[37]" type="logic">
+         <obj_property name="ElementShortName">[37]</obj_property>
+         <obj_property name="ObjectShortName">[37]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[36]" type="logic">
+         <obj_property name="ElementShortName">[36]</obj_property>
+         <obj_property name="ObjectShortName">[36]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[35]" type="logic">
+         <obj_property name="ElementShortName">[35]</obj_property>
+         <obj_property name="ObjectShortName">[35]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[34]" type="logic">
+         <obj_property name="ElementShortName">[34]</obj_property>
+         <obj_property name="ObjectShortName">[34]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[33]" type="logic">
+         <obj_property name="ElementShortName">[33]</obj_property>
+         <obj_property name="ObjectShortName">[33]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[32]" type="logic">
+         <obj_property name="ElementShortName">[32]</obj_property>
+         <obj_property name="ObjectShortName">[32]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[31]" type="logic">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[30]" type="logic">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[29]" type="logic">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[28]" type="logic">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[27]" type="logic">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[26]" type="logic">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">[26]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[25]" type="logic">
+         <obj_property name="ElementShortName">[25]</obj_property>
+         <obj_property name="ObjectShortName">[25]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[24]" type="logic">
+         <obj_property name="ElementShortName">[24]</obj_property>
+         <obj_property name="ObjectShortName">[24]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[23]" type="logic">
+         <obj_property name="ElementShortName">[23]</obj_property>
+         <obj_property name="ObjectShortName">[23]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[22]" type="logic">
+         <obj_property name="ElementShortName">[22]</obj_property>
+         <obj_property name="ObjectShortName">[22]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[21]" type="logic">
+         <obj_property name="ElementShortName">[21]</obj_property>
+         <obj_property name="ObjectShortName">[21]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[20]" type="logic">
+         <obj_property name="ElementShortName">[20]</obj_property>
+         <obj_property name="ObjectShortName">[20]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[19]" type="logic">
+         <obj_property name="ElementShortName">[19]</obj_property>
+         <obj_property name="ObjectShortName">[19]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[18]" type="logic">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[17]" type="logic">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[16]" type="logic">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">[16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[15]" type="logic">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[14]" type="logic">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[13]" type="logic">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[12]" type="logic">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[11]" type="logic">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">[11]</obj_property>
+      </wvobject>
+	  <wvobject fp_name="/cnn_top_tb/uut/res_from_1[10]" type="logic">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[9]" type="logic">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[8]" type="logic">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[7]" type="logic">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[6]" type="logic">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[5]" type="logic">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[4]" type="logic">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[3]" type="logic">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[2]" type="logic">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[1]" type="logic">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cnn_top_tb/uut/res_from_1[0]" type="logic">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+      </wvobject>

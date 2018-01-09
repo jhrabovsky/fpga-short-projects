@@ -14,11 +14,24 @@ entity mem_reader is
 		clk : in std_logic;
 		rst : in std_logic;
 		en : in std_logic;
-		data : out std_logic_vector(DATA_LEN - 1 downto 0)
+		data : out std_logic_vector(DATA_LEN - 1 downto 0);
+		ts : out std_logic
 	);
 end mem_reader;
 
 architecture rtl of mem_reader is
+
+function log2c (N : integer) return integer is
+    variable m, p : integer;
+begin
+    m := 0;
+    p := 1;
+    while p < N loop
+        m := m + 1;
+        p := p * 2;
+    end loop;
+    return m;
+end log2c; 
 
 component rom is
     Generic (
@@ -37,19 +50,23 @@ end component;
 
 component counter_down is
     Generic (
-        THRESHOLD : natural := 5
+        THRESHOLD : natural;
+        THRESHOLD_WIDTH : natural
     );
     Port ( CLK_IN : in STD_LOGIC;
            RST: in STD_LOGIC;
            EN : in STD_LOGIC;
-           COUNT : out STD_LOGIC_VECTOR(19 downto 0);
+           COUNT : out STD_LOGIC_VECTOR(THRESHOLD_WIDTH - 1 downto 0);
            TS : out STD_LOGIC
     );
 end component;
 
+constant THRESHOLD_WIDTH : natural := log2c(NO_ITEMS - 1);
+
 signal mem_data : std_logic_vector(DATA_LEN - 1 downto 0);
 signal mem_addr : std_logic_vector(ADDR_LEN - 1 downto 0);
-signal count_tmp : std_logic_vector(19 downto 0);
+signal count_tmp : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
+
 signal data_reg : std_logic_vector(DATA_LEN - 1 downto 0);
 signal data_next : std_logic_vector(DATA_LEN - 1 downto 0); 
 
@@ -70,14 +87,15 @@ begin
 
     addr_gen_inst : counter_down
         generic map (
-            THRESHOLD => NO_ITEMS - 1
+            THRESHOLD => NO_ITEMS - 1,
+            THRESHOLD_WIDTH => THRESHOLD_WIDTH
         )
         port map (
             CLK_IN => clk,
             RST => rst,
             EN => en,
             COUNT => count_tmp,
-            TS => open
+            TS => ts
         );  
 
 --    regs : process (clk) is
