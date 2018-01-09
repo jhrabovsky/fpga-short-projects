@@ -36,8 +36,7 @@ package misc_pkg is
     component counter_down_dynamic is
         Generic (
             THRESHOLD_WIDTH : natural
-        );
-        
+        );      
         Port ( 
             clk : in std_logic;
             ce : in std_logic;

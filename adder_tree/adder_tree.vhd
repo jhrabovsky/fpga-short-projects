@@ -22,6 +22,7 @@ end adder_tree;
 architecture rtl of adder_tree is
 
 constant NO_STAGES : natural := log2c(NO_INPUTS);
+
 type matrix is array(NO_STAGES downto 0) of std_logic_vector(DATA_WIDTH * (2**NO_STAGES) - 1 downto 0);
 signal p_next, p_reg : matrix;
 

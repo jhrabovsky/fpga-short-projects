@@ -32,12 +32,12 @@ impure function InitROM(FileName : in string) return ROM_T is
     variable ROM_tmp : ROM_T;
 begin
     for I in ROM_T'RANGE loop
-		if (endfile(romFile)) then
-			ROM_tmp(I) := (others => '0');
-		else
-			readline(romFile, romLine);
-			read(romLine, ROM_tmp(I));
-		end if;
+		  if (endfile(romFile)) then
+			  ROM_tmp(I) := (others => '0');
+		  else
+			  readline(romFile, romLine);
+			  read(romLine, ROM_tmp(I));
+		  end if;
     end loop;  
     return ROM_tmp;    
 end function;
